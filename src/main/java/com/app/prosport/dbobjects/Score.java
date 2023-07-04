@@ -1,7 +1,16 @@
 package com.app.prosport.dbobjects;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Score {
-    int scoreID;
-    int redScore;
-    int blueScore;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int scoreID;
+
+    private int redScore;
+    private int blueScore;
 }
