@@ -19,11 +19,6 @@ public class ProsportApplication implements CommandLineRunner {
         SpringApplication.run(ProsportApplication.class, args);
     }
 
-    @Autowired
-    PlayerRepo pob;
-    @Autowired
-    TeamRepo tob;
-
     @Override
     public void run(String[] args) throws Exception {
 

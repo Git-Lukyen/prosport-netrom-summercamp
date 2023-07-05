@@ -11,12 +11,14 @@ public class Player {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int playerID;
 
-    private String playerName;
+    private String playerFirstName;
+    private String playerLastName;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "teamid")
     private Team assignedTeam;
 
+    //ID getters-setters
     public void setPlayerID(int ID) {
         playerID = ID;
     }
@@ -25,11 +27,21 @@ public class Player {
         return playerID;
     }
 
-    public void setPlayerName(String name) {
-        playerName = name;
+    //Name getters-setters
+    public void setPlayerFirstName(String name) {
+        playerFirstName = name;
     }
 
-    public String getPlayerName() {
-        return playerName;
+    public void setPlayerLastName(String name) {
+        playerLastName = name;
     }
+
+    public String getPlayerFirstName() {
+        return playerFirstName;
+    }
+
+    public String getPlayerLastName() {
+        return playerLastName;
+    }
+
 }

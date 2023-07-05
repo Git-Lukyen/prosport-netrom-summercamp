@@ -21,6 +21,7 @@ public class Game {
     @ManyToMany(mappedBy = "registeredGames")
     List<Team> playingTeams = new ArrayList<>();
 
+    //ID getters-setters
     public void setGameID(int ID) {
         gameID = ID;
     }
@@ -29,6 +30,7 @@ public class Game {
         return gameID;
     }
 
+    //GameName getters-setters
     public void setGameName(String name) {
         gameName = name;
     }
@@ -37,12 +39,34 @@ public class Game {
         return gameName;
     }
 
+    //Location getters-setters
     public void setLocation(String name) {
         locationName = name;
     }
 
     public String getLocationName() {
         return locationName;
+    }
+
+    //PlayingTeams getters-setters
+    public void addPlayingTeam(Team team) {
+        playingTeams.add(team);
+    }
+
+    public void addPlayingTeams(List<Team> teams) {
+        playingTeams.addAll(teams);
+    }
+
+    public void removePlayingTeam(Team team) {
+        playingTeams.remove(team);
+    }
+
+    public void removePlayingTeams(List<Team> teams) {
+        playingTeams.removeAll(teams);
+    }
+
+    public void clearPlayingTeams() {
+        playingTeams.clear();
     }
 
 }
