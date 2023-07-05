@@ -1,5 +1,6 @@
-package com.app.prosport.dbobjects;
+package com.app.prosport.dbobjects.player;
 
+import com.app.prosport.dbobjects.team.Team;
 import jakarta.persistence.*;
 
 @Entity
@@ -7,16 +8,14 @@ import jakarta.persistence.*;
 public class Player {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int playerID;
 
-    @Column
     private String playerName;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "teamid")
-    private Team team;
+    private Team assignedTeam;
 
     public void setPlayerID(int ID) {
         playerID = ID;

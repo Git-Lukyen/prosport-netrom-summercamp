@@ -1,4 +1,4 @@
-package com.app.prosport.dbobjects;
+package com.app.prosport.dbobjects.player;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
