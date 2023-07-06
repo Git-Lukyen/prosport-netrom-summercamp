@@ -3,6 +3,8 @@ package com.app.prosport.dbobjects.player;
 import com.app.prosport.dbobjects.team.Team;
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
+
 @Entity
 @Table
 public class Player {
@@ -14,34 +16,13 @@ public class Player {
     private String playerFirstName;
     private String playerLastName;
 
+    private Integer playerAge;
+    private Integer playerWeight;
+    private Integer playerHeight;
+    private LocalDate registrationDate;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "teamid")
     private Team assignedTeam;
-
-    //ID getters-setters
-    public void setPlayerID(int ID) {
-        playerID = ID;
-    }
-
-    public int getPlayerID() {
-        return playerID;
-    }
-
-    //Name getters-setters
-    public void setPlayerFirstName(String name) {
-        playerFirstName = name;
-    }
-
-    public void setPlayerLastName(String name) {
-        playerLastName = name;
-    }
-
-    public String getPlayerFirstName() {
-        return playerFirstName;
-    }
-
-    public String getPlayerLastName() {
-        return playerLastName;
-    }
 
 }
