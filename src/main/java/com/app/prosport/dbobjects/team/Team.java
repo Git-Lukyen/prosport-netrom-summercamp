@@ -16,6 +16,7 @@ public class Team {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer teamID;
 
+    @Column
     private String teamName;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
@@ -29,4 +30,27 @@ public class Team {
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "team_game", joinColumns = {@JoinColumn(name = "team_id")}, inverseJoinColumns = {@JoinColumn(name = "game_id")})
     private List<Game> registeredGames = new ArrayList<>();
+
+    //Getters
+    public Integer getTeamID() {
+        return teamID;
+    }
+
+    public String getTeamName() {
+        return teamName;
+    }
+
+    public List<Player> getPlayers() {
+        return players;
+    }
+
+    public Integer getNumberOfPlayers() {
+        numberOfPlayers = players.size();
+        return numberOfPlayers;
+    }
+
+    //Setters
+    public void setTeamName(String name) {
+        teamName = name;
+    }
 }

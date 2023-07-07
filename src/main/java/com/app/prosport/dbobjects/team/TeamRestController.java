@@ -1,10 +1,12 @@
 package com.app.prosport.dbobjects.team;
 
 import com.app.prosport.dbobjects.player.Player;
+import com.app.prosport.dbobjects.player.PlayerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,7 +14,9 @@ import java.util.Optional;
 @RequestMapping("prosport/")
 public class TeamRestController {
     @Autowired
-    TeamRepo teamRepo;
+    private TeamRepo teamRepo;
+    @Autowired
+    private PlayerRepo playerRepo;
 
     @GetMapping(value = "teams")
     public List<Team> getAllTeams() {
@@ -34,16 +38,33 @@ public class TeamRestController {
         return teamRepo.findAll(Sort.by("registrationDate"));
     }
 
-    //TODO: make a filter between 2 dates and a sort by player count
+    @GetMapping(value = "teams/sort/name")
+    public List<Team> sortByTeamName() {
+        return teamRepo.findAll(Sort.by("teamName"));
+    }
 
-    @PostMapping(value = "teams/add-team/single", consumes = "application/json")
+    @GetMapping(value = "teams/filter/reg-date")
+    public Optional<List<Team>> getAllFilterDate(@RequestParam("from") LocalDate from, @RequestParam("to") LocalDate to) {
+        return teamRepo.findByRegistrationDateBetween(from, to, Sort.by("registrationDate"));
+    }
+
+    @PostMapping(value = "teams/add/single", consumes = "application/json")
     public Team addTeam(@RequestBody Team team) {
         return teamRepo.save(team);
     }
 
-    @PostMapping(value = "teams/add-team/multiple", consumes = "application/json")
+    @PostMapping(value = "teams/add/multiple", consumes = "application/json")
     public List<Team> addTeams(@RequestBody List<Team> teams) {
         return teamRepo.saveAll(teams);
+    }
+
+    @PostMapping(value = "teams/id/{id}/assign-player/{playerid}")
+    public void assignPlayerToTeam(@PathVariable(value = "id") Integer ID, @PathVariable(value = "playerid") Integer playerID) {
+        Team foundTeam = teamRepo.findById(ID).get();
+        Player foundPlayer = playerRepo.findById(playerID).get();
+        foundPlayer.setAssignedTeam(foundTeam);
+
+        playerRepo.save(foundPlayer);
     }
 
     @DeleteMapping(value = "teams/{id}")

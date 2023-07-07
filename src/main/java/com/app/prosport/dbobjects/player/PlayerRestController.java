@@ -22,6 +22,11 @@ public class PlayerRestController {
         return playerRepo.findById(ID);
     }
 
+    @PostMapping(value = "players/add/single", consumes = "application/json")
+    public Player addPlayer(@RequestBody Player player) {
+        return playerRepo.save(player);
+    }
+
     @DeleteMapping(value = "players")
     public void deleteAllPlayers() {
         playerRepo.deleteAll();
