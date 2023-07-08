@@ -2,13 +2,19 @@ package com.app.prosport.dbobjects.player;
 
 import com.app.prosport.dbobjects.team.Team;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDate;
-import java.util.Optional;
 
 @Entity
 @Table
+@Getter
+@Setter
+@NoArgsConstructor
 public class Player {
 
     @Id
@@ -17,6 +23,7 @@ public class Player {
 
     @ManyToOne(optional = true)
     @JoinColumn(name = "teamid")
+    @JsonIgnore
     private Team assignedTeam;
 
     private String firstName;
@@ -24,47 +31,8 @@ public class Player {
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate registrationDate;
 
+    //Years, Centimeters, Kilograms
     private Integer age;
     private Integer weight;
     private Integer height;
-
-    //Getters
-    public Integer getPlayerID() {
-        return playerID;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public Integer getAge() {
-        return age;
-    }
-
-    public Integer getWeight() {
-        return weight;
-    }
-
-    public Integer getHeight() {
-        return height;
-    }
-
-    public LocalDate getRegistrationDate() {
-        return registrationDate;
-    }
-
-    public Integer getAssignedTeam() {
-        if (assignedTeam == null) return -1;
-
-        return assignedTeam.getTeamID();
-    }
-
-    //Setters
-    public void setAssignedTeam(Team team) {
-        assignedTeam = team;
-    }
 }
