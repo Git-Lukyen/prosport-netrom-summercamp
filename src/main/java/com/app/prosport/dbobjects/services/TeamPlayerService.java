@@ -7,6 +7,7 @@ import com.app.prosport.dbobjects.team.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 
 import java.time.LocalDate;
@@ -14,6 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@CrossOrigin(origins = "http://localhost:8080")
 public class TeamPlayerService {
     @Autowired
     private PlayerRepository playerRepository;

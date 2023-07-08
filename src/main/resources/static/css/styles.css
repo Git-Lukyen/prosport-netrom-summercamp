@@ -1,0 +1,30 @@
+body
+{
+    padding:0;
+    margin:0;
+    background: #dfecf3;
+}
+
+nav {
+    font-family: "Arial Black";
+    font-size: large;
+    background-color: #7be5e5;
+    border-bottom-style: solid;
+    border-bottom-width: 3px;
+    border-bottom-color: #2a2a2a;
+}
+
+#home-button
+{
+    color: #2a2a2a;
+}
+
+#brand-name
+{
+    margin-left: 1%;
+    padding-right: 1.5%;
+    color: #2a2a2a;
+    border-right-style: solid;
+    border-right-width: 2px;
+    border-right-color: #2a2a2a;
+}
