@@ -1,24 +1,20 @@
 $(document).ready(function () {
     let baseURL = "http://localhost:8080/prosport/";
 
-    $("#teams-button").click(function(){
-        $.ajax({
-            type: "GET",
-            url: baseURL + "teams",
-            dataType: "json",
-            success: function (data, result) {
-                console.log("got-here");
+    $("#open-menu-btn").click(function () {
+        $("#side-menu").width("18vw");
+        $("#main-div").css("margin-left", "18vw");
+        $("body").css("background", "rgba(0, 0, 0, 0.4");
+        $("#main-div").css("filter", "brightness(60%)");
+    });
 
-                let table = $("<table><tr><th>Teams List</th></tr>");
-
-                $.each(data, function (index) {
-                    table.append("<p>Name: " + data[index].teamName + "</p>");
-                });
-
-                $('#teams-table').html(table);
-            }
-        });
+    $("#close-menu-btn").click(function () {
+        $("#side-menu").width("0vw");
+        $("#main-div").css("margin-left", "0vw");
+        $("body").css("background", "#f8f4f4");
+        $("#main-div").css("filter", "brightness(100%)");
     });
 });
+
 
 
