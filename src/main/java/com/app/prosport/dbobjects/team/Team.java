@@ -32,8 +32,15 @@ public class Team {
     private List<Player> players = new ArrayList<>();
 
     private Integer numberOfPlayers = players.size();
-
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "team_game", joinColumns = {@JoinColumn(name = "team_id")}, inverseJoinColumns = {@JoinColumn(name = "game_id")})
     private List<Game> registeredGames = new ArrayList<>();
+
+    public Integer getNumberOfPlayers() {
+        Integer len = players.size();
+        if (len == null)
+            return 0;
+
+        return len;
+    }
 }

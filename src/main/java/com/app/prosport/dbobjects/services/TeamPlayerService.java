@@ -152,16 +152,25 @@ public class TeamPlayerService {
     }
 
     public void removeTeam(Integer ID) {
-        teamRepository.deleteById(ID);
+
+        Team foundTeam = teamRepository.findById(ID).get();
+        List<Player> teamPlayers = foundTeam.getPlayers();
+
+        for (Player player : teamPlayers)
+            player.setAssignedTeam(null);
+
+        teamRepository.delete(foundTeam);
     }
 
     public void clearTeams() {
-        teamRepository.deleteAll();
+        List<Team> allTeams = teamRepository.findAll();
+        for (Team team : allTeams)
+            removeTeam(team.getTeamID());
     }
 
     @DeleteMapping(value = "prosport/teams-players")
     public void deleteTeamsAndPlayers() {
         playerRepository.deleteAll();
-        teamRepository.deleteAll();
+        clearTeams();
     }
 }

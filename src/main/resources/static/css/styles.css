@@ -1,7 +1,28 @@
 body {
     padding: 0;
     margin: 0;
-    background: #f8f4f4;
+    background-color: #f8f4f4;
+}
+
+#main-heading {
+    text-align: center;
+    color: #282828;
+}
+
+#teams-table {
+    align-self: center;
+    text-align: center;
+    margin: auto;
+    margin-top: 5%;
+    width: 75%;
+}
+
+th {
+    text-align: center;
+}
+
+td {
+    text-align: center;
 }
 
 .side-menu {
@@ -14,17 +35,35 @@ body {
     background-color: #f8f4f4;
     overflow-x: hidden;
     transition: 0.5s;
-    padding-top: 4vh;
+    padding-top: 5vh;
+}
+
+.side-menu .break-line {
+    border-bottom: solid 0.3vh #494949;
+    margin: 5%;
 }
 
 .side-menu a {
     text-decoration: none;
-    padding: 2% 2% 2% 7%;
+    padding: 2% 2% 2% 2%;
     display: block;
     font-size: x-large;
     color: #646464;
     transition: 0.3s;
+}
 
+#close-menu-btn {
+    display: flex;
+    position: absolute;
+    top: -3%;
+    right: 4.5%;
+    padding-bottom: 20%;
+    font-size: xxx-large;
+    margin-left: 20%;
+}
+
+#close-menu-btn:hover {
+    cursor: pointer;
 }
 
 .top-bar {

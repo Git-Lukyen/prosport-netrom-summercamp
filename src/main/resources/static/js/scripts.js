@@ -14,6 +14,8 @@ $(document).ready(function () {
         $("body").css("background", "#f8f4f4");
         $("#main-div").css("filter", "brightness(100%)");
     });
+
+    $("")
 });
 
 

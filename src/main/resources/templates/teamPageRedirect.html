@@ -13,27 +13,38 @@
 
         <link rel="stylesheet" type="text/css" href="../css/styles.css">
         <script src="../js/scripts.js"></script>
+        <script src="../js/team-page-scripts.js"></script>
 
     </head>
 
     <body>
         <div id="main-div">
-            <div class = "top-bar">
+            <div class="top-bar">
                 <a id="open-menu-btn" class="openbtn" href="#">&#9776;</a>
                 <a href="#">Prosport</a>
             </div>
-            <div>
-                <h1 id = "main-heading">Managing sportive teams has never been easier!</h1>
-            </div>
+            <table id="teams-table" class="table table-dark table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Reg. Date</th>
+                        <th scope="col">No. Players</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
         </div>
 
-        <div id = "side-menu" class="side-menu" href="">
+        <div id="side-menu" class="side-menu" href="">
             <a id="close-menu-btn" class="closebtn">&times;</a>
             <a href="/prosport/">🏠 &#160;Home</a>
             <a href="#">🏆 &#160;Competitions</a>
             <a href="/prosport/teams-page">👥 Teams</a>
             <a href="#">👤 &#160;Players</a>
-            <div class = "break-line"></div>
+            <div class="break-line"></div>
         </div>
 
     </body>

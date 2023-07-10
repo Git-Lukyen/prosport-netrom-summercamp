@@ -11,7 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class UIController {
 
     @GetMapping(value = "")
-    public String startPageHTML() {
+    public String homePageHTML() {
         return "testModel";
+    }
+
+    @GetMapping(value = "teams-page")
+    public String teamsPageHTML() {
+        return "teamPageRedirect";
     }
 }
