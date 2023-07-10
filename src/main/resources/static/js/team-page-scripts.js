@@ -15,10 +15,7 @@ $(document).ready(function () {
             dataType: 'json',
             success: function (data) {
                 console.log(data);
-                tbody.append("<tr><th scope = \"row\">" + data.teamID + "</th>" +
-                    "<td>" + data.teamName + "</td>" +
-                    "<td>" + data.registrationDate + "</td>" +
-                    "<td>" + data.numberOfPlayers + "</td></tr>");
+                appendTeamsTable(data);
                 $("#team-menu input").val("");
             }
         });
@@ -26,8 +23,10 @@ $(document).ready(function () {
 
     $("#remove-team-btn").click(function () {
         let ID = $("#team-menu #rem-input").val();
-        console.log(ID);
-        console.log(tbody.remove(ID));
+        $("#" + ID).remove();
+
+        console.log("deleted");
+        $("#team-menu #rem-input").val("");
 
         $.ajax({
             type: "DELETE",
@@ -36,28 +35,26 @@ $(document).ready(function () {
             dataType: 'json',
             data: {},
             success: function () {
-                console.log("deleted");
             }
         });
     });
 
-    let update = function () {
-        $.ajax({
-            url: baseURL + "teams",
-            contentType: "application/json",
-            dataType: 'json',
-            success: function (data) {
-                $.each(data, function (index) {
-                    tbody.append("<tr><th scope = \"row\"><data value=" + data[index].teamID + ">" + data[index].teamID + "</data></data></th>" +
-                        "<td>" + data[index].teamName + "</td>" +
-                        "<td>" + data[index].registrationDate + "</td>" +
-                        "<td>" + data[index].numberOfPlayers + "</td></tr>");
-                });
-            }
-        });
-        console.log("updated teams table");
+    let appendTeamsTable = function (data) {
+        tbody.append("<tr id = \"" + data.teamID + "\"><th scope=\"row\">" + data.teamID + "</th>" +
+            "<td>" + data.teamName + "</td>" +
+            "<td>" + data.registrationDate + "</td>" +
+            "<td>" + data.numberOfPlayers + "</td></tr>");
     };
-    update();
 
-})
-;
+    $.ajax({
+        url: baseURL + "teams",
+        contentType: "application/json",
+        dataType: 'json',
+        success: function (data) {
+            $.each(data, function (index) {
+                appendTeamsTable(data[index]);
+            });
+        }
+    });
+
+});

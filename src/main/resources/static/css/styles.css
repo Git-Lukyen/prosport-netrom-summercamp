@@ -104,7 +104,7 @@ td {
 
 #team-menu{
     position: absolute;
-    margin-top: 5%;
+    margin-top: 4%;
     margin-left: 4%;
     display: block;
     text-align:center;
@@ -115,6 +115,9 @@ td {
     flex-wrap: wrap;
     width: 20vw;
     text-align: center;
+    margin-top: 10%;
+    border: 2px solid;
+    background-color: #f8f4f4;
 }
 
 #team-menu .btn {
