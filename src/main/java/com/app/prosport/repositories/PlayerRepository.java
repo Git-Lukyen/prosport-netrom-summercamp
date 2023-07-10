@@ -1,5 +1,6 @@
-package com.app.prosport.dbobjects.player;
+package com.app.prosport.repositories;
 
+import com.app.prosport.dbobjects.Player;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 

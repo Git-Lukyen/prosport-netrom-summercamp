@@ -1,6 +1,5 @@
-package com.app.prosport.dbobjects.player;
+package com.app.prosport.dbobjects;
 
-import com.app.prosport.dbobjects.team.Team;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;

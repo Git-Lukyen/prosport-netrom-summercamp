@@ -1,12 +1,9 @@
-package com.app.prosport.dbobjects.game;
+package com.app.prosport.dbobjects;
 
-import com.app.prosport.dbobjects.team.Team;
 import jakarta.persistence.*;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 
 @Entity
 public class Game {

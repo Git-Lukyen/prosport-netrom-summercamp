@@ -1,7 +1,5 @@
-package com.app.prosport.dbobjects.team;
+package com.app.prosport.dbobjects;
 
-import com.app.prosport.dbobjects.game.Game;
-import com.app.prosport.dbobjects.player.Player;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.Getter;

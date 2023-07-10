@@ -10,11 +10,29 @@ body {
 }
 
 #teams-table {
-    align-self: center;
     text-align: center;
-    margin: auto;
-    margin-top: 5%;
-    width: 75%;
+    position: relative;
+    margin: 3% 0% 3% 28%;
+    width: 70%;
+    border:1px;
+}
+
+#teams-table tr:nth-child(odd) {
+    background-color: #f0d8f8;
+    text-color: #282828;
+}
+
+#teams-table tr:nth-child(even) {
+    background-color: #dec3eb;
+    text-color: #dee2e6;
+}
+
+#teams-table thead tr th{
+    background-color: #2f262d;
+}
+
+#teams-table thead{
+    color:#f8f4f4;
 }
 
 th {
@@ -82,6 +100,29 @@ td {
     color: #f8f4f4;
     text-decoration: none;
     transition: 0.3s;
+}
+
+#team-menu{
+    position: absolute;
+    margin-top: 5%;
+    margin-left: 4%;
+    display: block;
+    text-align:center;
+}
+
+#team-menu .form-control{
+    display: flex;
+    flex-wrap: wrap;
+    width: 20vw;
+    text-align: center;
+}
+
+#team-menu .btn {
+    margin-top: 5%;
+    /*     margin-left: 27.5%; */
+    align-self:center;
+    background-color: #2f262d;
+    color: white;
 }
 
 #main-div {

@@ -1,9 +1,9 @@
-package com.app.prosport.dbobjects.services;
+package com.app.prosport.services;
 
-import com.app.prosport.dbobjects.player.Player;
-import com.app.prosport.dbobjects.player.PlayerRepository;
-import com.app.prosport.dbobjects.team.Team;
-import com.app.prosport.dbobjects.team.TeamRepository;
+import com.app.prosport.dbobjects.Player;
+import com.app.prosport.repositories.PlayerRepository;
+import com.app.prosport.dbobjects.Team;
+import com.app.prosport.repositories.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -122,6 +122,8 @@ public class TeamPlayerService {
     }
 
     public Team addTeam(Team team) {
+        if (team.getRegistrationDate() == null)
+            team.setRegistrationDate(LocalDate.now());
         return teamRepository.save(team);
     }
 
@@ -129,31 +131,26 @@ public class TeamPlayerService {
         return teamRepository.saveAll(teams);
     }
 
-    public Player assignPlayerToTeam(Integer teamID, Integer playerID) {
+    public Optional<Player> assignPlayerToTeam(Integer teamID, Integer playerID) {
         Team foundTeam = teamRepository.findById(teamID).get();
         Player foundPlayer = playerRepository.findById(playerID).get();
+
+        if (foundTeam == null || foundPlayer == null)
+            return null;
+
         foundPlayer.setAssignedTeam(foundTeam);
 
         playerRepository.save(foundPlayer);
 
-        return foundPlayer;
-    }
-
-    public List<Player> assignPlayersToTeam(Integer teamID, List<Integer> playerIDs) {
-        Team foundTeam = teamRepository.findById(teamID).get();
-        List<Player> foundPlayers = playerRepository.findAllById(playerIDs);
-
-        for (Player playerIterator : foundPlayers)
-            playerIterator.setAssignedTeam(foundTeam);
-
-        playerRepository.saveAll(foundPlayers);
-
-        return foundPlayers;
+        return Optional.of(foundPlayer);
     }
 
     public void removeTeam(Integer ID) {
 
         Team foundTeam = teamRepository.findById(ID).get();
+        if (foundTeam == null)
+            return;
+
         List<Player> teamPlayers = foundTeam.getPlayers();
 
         for (Player player : teamPlayers)

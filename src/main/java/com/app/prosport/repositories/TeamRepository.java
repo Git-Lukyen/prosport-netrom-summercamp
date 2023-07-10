@@ -1,6 +1,7 @@
-package com.app.prosport.dbobjects.team;
+package com.app.prosport.repositories;
 
 
+import com.app.prosport.dbobjects.Team;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 

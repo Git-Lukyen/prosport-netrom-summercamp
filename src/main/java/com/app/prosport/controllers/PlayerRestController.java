@@ -1,6 +1,7 @@
-package com.app.prosport.dbobjects.player;
+package com.app.prosport.controllers;
 
-import com.app.prosport.dbobjects.services.TeamPlayerService;
+import com.app.prosport.dbobjects.Player;
+import com.app.prosport.services.TeamPlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -96,7 +97,7 @@ public class PlayerRestController {
     }
 
     @PostMapping(value = "players/id/{id}/assign-team/{teamid}")
-    public Player assignPlayerToTeam(@PathVariable(value = "id") Integer playerID, @PathVariable(value = "teamid") Integer ID) {
+    public Optional<Player> assignPlayerToTeam(@PathVariable(value = "id") Integer playerID, @PathVariable(value = "teamid") Integer ID) {
         return teamPlayerService.assignPlayerToTeam(ID, playerID);
     }
 
