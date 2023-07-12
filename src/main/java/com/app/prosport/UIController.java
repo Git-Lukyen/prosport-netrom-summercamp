@@ -24,4 +24,9 @@ public class UIController {
     public String playersPageHTML() {
         return "playersPageRedirect";
     }
+
+    @GetMapping(value = "testing-page")
+    public String testPageHTML() {
+        return "testPage";
+    }
 }

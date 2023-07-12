@@ -21,30 +21,39 @@ $(document).ready(function () {
             }
         });
     });
+    $("#team-menu").keypress(function (e) {
+        if (e.which == 13)
+            $("#add-team-btn").click();
+    });
 
-    $("#remove-team-btn").click(function () {
-        let ID = $("#team-menu #rem-input").val();
-        $("#" + ID).remove();
+    let lastSavedID;
+    let lastSavedName;
+    let appendTeamsTable = function (data) {
+        tbody.append("<tr id = \"" + data.teamID + "\"><th scope=\"row\">" + data.teamID + "</th>" +
+            "<td id='name'>" + data.teamName + "</td>" +
+            "<td>" + data.registrationDate + "</td>" +
+            "<td>" + data.numberOfPlayers + "</td>" +
+            "<td><button class='del-team-btn fa fa-close' data-bs-toggle=\"modal\" data-bs-target=\"#del-team-popup\">" + "&times;" + "</button></td></tr>");
 
-        console.log("deleted");
-        $("#team-menu #rem-input").val("");
+        $('.del-team-btn').click(function () {
+            lastSavedID = $(this).parent().parent().attr("ID");
+            lastSavedName = $("#" + lastSavedID + " #name").text();
+            console.log(lastSavedName);
+            $(".modal-body").empty();
+            $(".modal-body").append("<h3>Delete team " + lastSavedName + "?</h3>");
+        });
+    };
 
+    $("#popup-confirm-btn").click(function () {
         $.ajax({
             type: "DELETE",
-            url: baseURL + "teams/" + ID,
+            url: baseURL + "teams/" + lastSavedID,
             contentType: "application/json",
             success: function () {
                 updateTeamsTable();
             }
         });
     });
-
-    let appendTeamsTable = function (data) {
-        tbody.append("<tr id = \"" + data.teamID + "\"><th scope=\"row\">" + data.teamID + "</th>" +
-            "<td>" + data.teamName + "</td>" +
-            "<td>" + data.registrationDate + "</td>" +
-            "<td>" + data.numberOfPlayers + "</td></tr>");
-    };
 
     let updateTeamsTable = function () {
         $.ajax({

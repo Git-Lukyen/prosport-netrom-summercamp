@@ -21,6 +21,22 @@
     </head>
 
     <body>
+
+        <div class="modal fade" id="del-team-popup" tabindex="-1" aria-labelledby="popup-label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">NO</button>
+                        <button id="popup-confirm-btn" type="button" class="btn btn-primary" data-bs-dismiss="modal">
+                            YES
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div id="main-div">
             <div class="top-bar">
                 <a id="open-menu-btn" class="openbtn" href="#">&#9776;</a>
@@ -31,10 +47,6 @@
                     <input id="add-input" type="text" class="form-control" placeholder="Team Name">
                 </div>
                 <button id="add-team-btn" class="btn">ADD TEAM</button>
-                <div class="input-group">
-                    <input id="rem-input" type="text" class="form-control" placeholder="Team ID">
-                </div>
-                <button id="remove-team-btn" class="btn">REMOVE TEAM</button>
             </div>
 
             <table id="teams-table" class="table table-bordered nowrap">
@@ -44,6 +56,7 @@
                         <th scope="col">Name</th>
                         <th scope="col">Reg. Date</th>
                         <th scope="col">No. Players</th>
+                        <th scope="col" id="del-col">Del.</th>
                     </tr>
                 </thead>
                 <tbody>

@@ -30,6 +30,10 @@ public class Team {
     private List<Player> players = new ArrayList<>();
 
     private Integer numberOfPlayers = players.size();
+
+    @ManyToMany(mappedBy = "registeredTeams")
+    private List<Competition> assignedComps;
+
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "team_game", joinColumns = {@JoinColumn(name = "team_id")}, inverseJoinColumns = {@JoinColumn(name = "game_id")})
     private List<Game> registeredGames = new ArrayList<>();

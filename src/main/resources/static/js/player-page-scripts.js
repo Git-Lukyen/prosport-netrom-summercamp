@@ -24,36 +24,43 @@ $(document).ready(function () {
             success: function (data) {
                 console.log(data);
                 updatePlayersTable();
-                $("#player-menu input").val("");
             }
         });
     });
+    $("#player-menu").keypress(function (e) {
+        if (e.which == 13)
+            $("#add-player-btn").click();
+    });
 
-    $("#rem-player-btn").click(function () {
-        let ID = $("#player-menu #rem-input").val();
-        $("#" + ID).remove();
+    let lastSavedID;
+    let lastSavedName;
+    let appendPlayersTable = function (data) {
+        tbody.append("<tr id = \"" + data.playerID + "\"><th scope=\"row\">" + data.playerID + "</th>" +
+            "<td id='name'>" + data.firstName + " " + data.lastName + "</td>" +
+            "<td>" + data.age + "</td>" +
+            "<td>" + data.height + "</td>" +
+            "<td>" + data.weight + "</td>" +
+            "<td>" + data.registrationDate + "</td>" +
+            "<td><button class='del-player-btn fa fa-close' data-bs-toggle=\"modal\" data-bs-target=\"#del-player-popup\">" + "&times;" + "</button></td></tr>");
 
-        console.log("deleted");
-        $("#player-menu #rem-input").val("");
+        $('.del-player-btn').click(function () {
+            lastSavedID = $(this).parent().parent().attr("ID");
+            lastSavedName = $("#" + lastSavedID + " #name").text();
+            $(".modal-body").empty();
+            $(".modal-body").append("<h3>Delete player " + lastSavedName + "?</h3>");
+        });
+    };
 
+    $("#popup-confirm-btn").click(function () {
         $.ajax({
             type: "DELETE",
-            url: baseURL + "players/" + ID,
+            url: baseURL + "players/" + lastSavedID,
             contentType: "application/json",
             success: function () {
                 updatePlayersTable();
             }
         });
     });
-
-    let appendPlayersTable = function (data) {
-        tbody.append("<tr id = \"" + data.playerID + "\"><th scope=\"row\">" + data.playerID + "</th>" +
-            "<td>" + data.firstName + " " + data.lastName + "</td>" +
-            "<td>" + data.age + "</td>" +
-            "<td>" + data.height + "</td>" +
-            "<td>" + data.weight + "</td>" +
-            "<td>" + data.registrationDate + "</td></tr>");
-    };
 
     let updatePlayersTable = function () {
         $.ajax({
@@ -67,6 +74,7 @@ $(document).ready(function () {
                     appendPlayersTable(data[index]);
                 });
                 $("#players-table").DataTable();
+
             }
         });
     }

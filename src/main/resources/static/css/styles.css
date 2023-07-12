@@ -15,7 +15,7 @@ body {
     position: relative;
     margin: 5.9% 0% 3% 28%;
     width: 70%;
-    border:1px;
+    border: 1px;
 }
 
 #teams-table tr:nth-child(odd), #players-table tr:nth-child(odd) {
@@ -28,12 +28,13 @@ body {
     text-color: #dee2e6;
 }
 
-#teams-table thead tr th, #players-table thead tr th{
+#teams-table thead tr th, #players-table thead tr th {
     background-color: #2f262d;
+    text-align: center;
 }
 
-#teams-table thead, #players-table thead{
-    color:#f8f4f4;
+#teams-table thead, #players-table thead {
+    color: #f8f4f4;
 }
 
 #teams-table_length, #players-table_length {
@@ -124,16 +125,20 @@ td {
     transition: 0.3s;
 }
 
-#team-menu, #player-menu{
+#team-menu, #player-menu {
     position: absolute;
-    margin-top: 4%;
+    margin-top: 5.7%;
     margin-left: 4%;
     display: block;
-    text-align:center;
-    z-index:2;
+    text-align: center;
+    z-index: 2;
 }
 
-#team-menu .form-control, #player-menu .form-control{
+#team-menu {
+    margin-top: 4%;
+}
+
+#team-menu .form-control, #player-menu .form-control {
     display: flex;
     flex-wrap: wrap;
     width: 20vw;
@@ -146,12 +151,12 @@ td {
 #team-menu .btn, #player-menu .btn {
     margin-top: 5%;
     /*     margin-left: 27.5%; */
-    align-self:center;
+    align-self: center;
     background-color: #2f262d;
     color: white;
 }
 
-#player-menu .form-control{
+#player-menu .form-control {
     margin-top: 3px;
     width: 8.5vw;
 }
@@ -160,14 +165,24 @@ td {
     margin-left: 1.2vw;
 }
 
-#player-menu #add-player-btn{
+#player-menu #add-player-btn {
     margin-bottom: 20px;
+}
+
+#del-col {
+    width: 0px !important;
+}
+
+.del-player-btn, .del-team-btn {
+    font-size: large;
+    background: #ff8787;
+    width: 2.5vw;
 }
 
 #main-div {
     transition: margin-left 0.5s;
 }
 
-#teams-table_wrapper, #players-table_wrapper{
-    display:flow-root;
+#teams-table_wrapper, #players-table_wrapper {
+    display: flow-root;
 }

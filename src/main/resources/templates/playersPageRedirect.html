@@ -22,6 +22,22 @@
     </head>
 
     <body>
+
+        <div class="modal fade" id="del-player-popup" tabindex="-1" aria-labelledby="popup-label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">NO</button>
+                        <button id="popup-confirm-btn" type="button" class="btn btn-primary" data-bs-dismiss="modal">
+                            YES
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div id="main-div">
             <div class="top-bar">
                 <a id="open-menu-btn" class="openbtn" href="#">&#9776;</a>
@@ -38,10 +54,6 @@
                     <input id="input-weight" type="text" class="form-control" placeholder="Weight (KG)">
                 </div>
                 <button id="add-player-btn" class="btn">ADD PLAYER</button>
-                <div class="input-group">
-                    <input id="rem-input" type="text" class="form-control" placeholder="Player ID">
-                </div>
-                <button id="rem-player-btn" class="btn">REMOVE PLAYER</button>
             </div>
 
             <table id="players-table" class="table table-bordered">
@@ -53,6 +65,7 @@
                         <th scope="col">Height</th>
                         <th scope="col">Weight</th>
                         <th scope="col">Reg. Date</th>
+                        <th scope="col" id="del-col">Del.</th>
                     </tr>
                 </thead>
                 <tbody>
