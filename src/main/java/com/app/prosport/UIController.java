@@ -15,8 +15,13 @@ public class UIController {
         return "testModel";
     }
 
-    @GetMapping(value = "teams-page")
+    @GetMapping(value = "teams-section")
     public String teamsPageHTML() {
-        return "teamPageRedirect";
+        return "teamsPageRedirect";
+    }
+
+    @GetMapping(value = "players-section")
+    public String playersPageHTML() {
+        return "playersPageRedirect";
     }
 }

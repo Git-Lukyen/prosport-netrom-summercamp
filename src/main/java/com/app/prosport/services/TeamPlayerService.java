@@ -81,6 +81,9 @@ public class TeamPlayerService {
     }
 
     public Player addPlayer(Player player) {
+        if (player.getRegistrationDate() == null)
+            player.setRegistrationDate(LocalDate.now());
+
         return playerRepository.save(player);
     }
 

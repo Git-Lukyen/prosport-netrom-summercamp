@@ -7,6 +7,8 @@ $(document).ready(function () {
         let data = {teamName: name};
         data = JSON.stringify(data);
 
+        $("#team-menu #add-input").val("");
+
         $.ajax({
             type: "POST",
             data: data,
@@ -15,8 +17,7 @@ $(document).ready(function () {
             dataType: 'json',
             success: function (data) {
                 console.log(data);
-                appendTeamsTable(data);
-                $("#team-menu input").val("");
+                updateTeamsTable();
             }
         });
     });
@@ -32,9 +33,8 @@ $(document).ready(function () {
             type: "DELETE",
             url: baseURL + "teams/" + ID,
             contentType: "application/json",
-            dataType: 'json',
-            data: {},
             success: function () {
+                updateTeamsTable();
             }
         });
     });
@@ -46,15 +46,22 @@ $(document).ready(function () {
             "<td>" + data.numberOfPlayers + "</td></tr>");
     };
 
-    $.ajax({
-        url: baseURL + "teams",
-        contentType: "application/json",
-        dataType: 'json',
-        success: function (data) {
-            $.each(data, function (index) {
-                appendTeamsTable(data[index]);
-            });
-        }
-    });
+    let updateTeamsTable = function () {
+        $.ajax({
+            url: baseURL + "teams",
+            contentType: "application/json",
+            dataType: 'json',
+            success: function (data) {
+                $("#teams-table").DataTable().clear();
+                $("#teams-table").DataTable().destroy();
+                $.each(data, function (index) {
+                    appendTeamsTable(data[index]);
+                });
+                $("#teams-table").DataTable();
+            }
+        });
+    }
+
+    updateTeamsTable();
 
 });

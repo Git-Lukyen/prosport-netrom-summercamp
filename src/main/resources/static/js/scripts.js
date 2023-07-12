@@ -3,14 +3,12 @@ $(document).ready(function () {
 
     $("#open-menu-btn").click(function () {
         $("#side-menu").width("18vw");
-        $("#main-div").css("margin-left", "18vw");
         $("body").css("background", "rgba(0, 0, 0, 0.4");
         $("#main-div").css("filter", "brightness(60%)");
     });
 
     $("#close-menu-btn").click(function () {
         $("#side-menu").width("0vw");
-        $("#main-div").css("margin-left", "0vw");
         $("body").css("background", "#f8f4f4");
         $("#main-div").css("filter", "brightness(100%)");
     });

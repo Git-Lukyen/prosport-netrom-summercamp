@@ -101,7 +101,7 @@ public class PlayerRestController {
         return teamPlayerService.assignPlayerToTeam(ID, playerID);
     }
 
-    @DeleteMapping(value = "players/id/{id}")
+    @DeleteMapping(value = "players/{id}")
     public void deleteByID(@PathVariable(value = "id") Integer ID) {
         teamPlayerService.deletePlayerById(ID);
     }
