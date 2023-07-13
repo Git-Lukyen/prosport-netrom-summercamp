@@ -25,6 +25,11 @@ public class UIController {
         return "playersPageRedirect";
     }
 
+    @GetMapping(value = "comp-section")
+    public String compPageHTML() {
+        return "compPageRedirect";
+    }
+
     @GetMapping(value = "testing-page")
     public String testPageHTML() {
         return "testPage";

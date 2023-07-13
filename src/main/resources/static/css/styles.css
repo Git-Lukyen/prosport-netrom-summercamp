@@ -10,7 +10,7 @@ body {
     color: #282828;
 }
 
-#teams-table, #players-table {
+#teams-table, #players-table, #comp-table {
     text-align: center;
     position: relative;
     margin: 5.9% 0% 3% 28%;
@@ -18,41 +18,41 @@ body {
     border: 1px;
 }
 
-#teams-table tr:nth-child(odd), #players-table tr:nth-child(odd) {
+#teams-table tr:nth-child(odd), #players-table tr:nth-child(odd), #comp-table tr:nth-child(odd) {
     background-color: #f0d8f8;
     text-color: #282828;
 }
 
-#teams-table tr:nth-child(even), #players-table tr:nth-child(even) {
+#teams-table tr:nth-child(even), #players-table tr:nth-child(even), #comp-table tr:nth-child(even) {
     background-color: #dec3eb;
     text-color: #dee2e6;
 }
 
-#teams-table thead tr th, #players-table thead tr th {
+#teams-table thead tr th, #players-table thead tr th, #comp-table thead tr th {
     background-color: #2f262d;
     text-align: center;
 }
 
-#teams-table thead, #players-table thead {
+#teams-table thead, #players-table thead, #comp-table thead {
     color: #f8f4f4;
 }
 
-#teams-table_length, #players-table_length {
+#teams-table_length, #players-table_length, #comp-table_length {
     margin-left: 28.1%;
     margin-top: 2.5%;
 }
 
-#teams-table_filter, #players-table_filter {
+#teams-table_filter, #players-table_filter, #comp-table_filter {
     margin-top: 2.5%;
     margin-right: 2.1%;
 }
 
-#teams-table_info, #players-table_info {
+#teams-table_info, #players-table_info, #comp-table_info {
     margin-left: 28.1%;
     margin-top: -3.5%;
 }
 
-#teams-table_paginate, #players-table_paginate {
+#teams-table_paginate, #players-table_paginate, #comp-table_paginate {
     position: absolute;
     margin-left: 52.5%;
     margin-top: -1%;
@@ -125,7 +125,7 @@ td {
     transition: 0.3s;
 }
 
-#team-menu, #player-menu {
+#team-menu, #player-menu, #comp-menu {
     position: absolute;
     margin-top: 5.7%;
     margin-left: 4%;
@@ -134,11 +134,15 @@ td {
     z-index: 2;
 }
 
+#comp-menu {
+    margin-top: 5.3%;
+}
+
 #team-menu {
     margin-top: 4%;
 }
 
-#team-menu .form-control, #player-menu .form-control {
+#team-menu .form-control, #player-menu .form-control, #comp-menu .form-control, #comp-menu #date_picker {
     display: flex;
     flex-wrap: wrap;
     width: 20vw;
@@ -148,7 +152,11 @@ td {
     background-color: #f8f4f4;
 }
 
-#team-menu .btn, #player-menu .btn {
+#comp-menu .form-control, #comp-menu #date_picker {
+    margin-top: 3%;
+}
+
+#team-menu .btn, #player-menu .btn, #comp-menu .btn {
     margin-top: 5%;
     /*     margin-left: 27.5%; */
     align-self: center;
@@ -173,7 +181,7 @@ td {
     width: 0px !important;
 }
 
-.del-player-btn, .del-team-btn {
+.del-player-btn, .del-team-btn, .del-comp-btn {
     font-size: large;
     background: #ff8787;
     width: 2.5vw;
@@ -183,6 +191,6 @@ td {
     transition: margin-left 0.5s;
 }
 
-#teams-table_wrapper, #players-table_wrapper {
+#teams-table_wrapper, #players-table_wrapper, #comp-table_wrapper {
     display: flow-root;
 }

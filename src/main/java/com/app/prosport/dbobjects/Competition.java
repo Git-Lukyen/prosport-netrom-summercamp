@@ -18,10 +18,13 @@ public class Competition {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer compID;
 
-    private String location;
+    private String compName;
+    private String compLocation;
 
     private LocalDate compStart;
-    private LocalDate compEnd;
+
+    private Integer numberOfTeams;
+    private Integer numberOfGames;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "comp_team", joinColumns = {@JoinColumn(name = "comp_id")}, inverseJoinColumns = {@JoinColumn(name = "team_id")})
@@ -29,5 +32,19 @@ public class Competition {
 
     @OneToMany(mappedBy = "assignedComp")
     private List<Game> scheduledGames;
+
+    public Integer getNumberOfTeams() {
+        if (registeredTeams == null)
+            return 0;
+
+        return registeredTeams.size();
+    }
+
+    public Integer getNumberOfGames() {
+        if (scheduledGames == null)
+            return 0;
+
+        return scheduledGames.size();
+    }
 
 }
