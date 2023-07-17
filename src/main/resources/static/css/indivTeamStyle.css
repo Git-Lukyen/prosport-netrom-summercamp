@@ -1,0 +1,163 @@
+#team-main-display {
+    background: #282828;
+    margin: auto;
+    margin-top: 2%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    color: #f8f4f4;
+    width: 80%;
+    padding: 2vh;
+    overflow-x: clip;
+    min-height: 50vh;
+}
+
+#team-details {
+    padding-top: 4vh;
+    padding-left: 1%;
+    line-height: 50%;
+}
+
+#team-title {
+    border-bottom: solid 2px;
+    padding-left: 1%;
+}
+
+#edit-team-lbl{
+    position: absolute;
+    top: 262px;
+}
+
+#team-players-table {
+    width: 50%;
+    border: 1px solid;
+}
+
+.dataTables_paginate {
+    display: none;
+}
+
+#table-title {
+    margin-left: 52%;
+    margin-top: -3.25%;
+    font-size: large;
+    position: absolute;
+    text-decoration: underline 1.5px;
+}
+
+#team-players-table_wrapper {
+    margin-top: -4.5%;
+    right: -25%;
+}
+
+#team-players-table tr:nth-child(odd) {
+    background-color: #f0d8f8;
+    text-color: #282828;
+}
+
+#team-players-table tr:nth-child(even) {
+    background-color: #dec3eb;
+    text-color: #dee2e6;
+}
+
+#team-players-table thead tr th {
+    background-color: #f8f4f4;
+    text-align: center;
+}
+
+#team-players-table thead {
+    color: #282828;
+}
+
+#team-players-table_filter {
+    padding-right: 25.1%;
+    padding-bottom: 1%;
+}
+
+#team-players-table_info {
+    margin-left: 25%;
+    margin-top: -1%;
+    font-size: small;
+}
+
+#team-players-table_paginate {
+    position: absolute;
+    margin-left: 58%;
+    margin-top: 0%;
+    color: white;
+}
+
+#team-players-table_length {
+    margin-left: 25%;
+
+}
+
+th {
+    text-align: center;
+}
+
+td {
+    text-align: center;
+}
+
+td a {
+    text-decoration: none;
+    color: #282828;
+}
+
+#add-players-select-btn {
+    position: absolute !important;
+    background: #dec3eb;
+    font-size: revert;
+    top: 230px;
+    left: 543px;
+}
+
+.easySelect {
+    position: absolute !important;
+    width: 200px !important;
+    top: 273px;
+    left: 500px;
+}
+
+.styledSelect {
+    background: #f8f4f4;
+}
+
+td a {
+    text-decoration: none;
+    color: #282828;
+}
+
+#del-col {
+    width: 0px !important;
+}
+
+.unassign-player-btn {
+    font-size: large;
+    background: #ff8787;
+    width: 2.5vw;
+}
+
+#input-team-name {
+    position: absolute;
+    width: 250px !important;
+    top: -40px;
+    height: 30px;
+    text-align: center;
+    background: #f8f4f4;
+}
+
+#team_date_picker {
+    position: absolute;
+    top: -7px;
+    left: 30px;
+    text-align: center;
+    background: #f8f4f4;
+}
+
+#save-changes-btn {
+    position: absolute !important;
+    background: #dec3eb;
+    font-size: revert;
+    top: 365px;
+    left: 227px;
+}

@@ -26,6 +26,16 @@ public class PlayerRestController {
         return teamPlayerService.findPlayerByID(ID);
     }
 
+    @GetMapping(value = "players/in-team/{id}")
+    public List<Player> findPlayersInTeam(@PathVariable(value = "id") Integer ID) {
+        return teamPlayerService.findPlayersInTeam(ID);
+    }
+
+    @GetMapping(value = "players/not-in-team/{id}")
+    public List<Player> findPlayersNotInTeam(@PathVariable(value = "id") Integer ID) {
+        return teamPlayerService.findPlayersNotInTeam(ID);
+    }
+
     @GetMapping(value = "players/first-name/{name}")
     public Optional<List<Player>> findPlayersByFirstName(@PathVariable(value = "name") String name) {
         return teamPlayerService.findPlayersByFirstName(name);
@@ -99,6 +109,11 @@ public class PlayerRestController {
     @PostMapping(value = "players/id/{id}/assign-team/{teamid}")
     public Optional<Player> assignPlayerToTeam(@PathVariable(value = "id") Integer playerID, @PathVariable(value = "teamid") Integer ID) {
         return teamPlayerService.assignPlayerToTeam(ID, playerID);
+    }
+
+    @PatchMapping(value = "players/id/{id}/unassign-team")
+    public void unassignTeam(@PathVariable(value = "id") Integer playerID) {
+        teamPlayerService.unassignPlayer(playerID);
     }
 
     @DeleteMapping(value = "players/{id}")

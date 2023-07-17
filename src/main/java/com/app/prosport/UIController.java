@@ -3,6 +3,7 @@ package com.app.prosport;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @CrossOrigin(origins = "http://localhost:8080")
@@ -33,5 +34,10 @@ public class UIController {
     @GetMapping(value = "testing-page")
     public String testPageHTML() {
         return "testPage";
+    }
+
+    @GetMapping(value = "teams-section/id/{id}")
+    public String indivTeamPageHTML(@PathVariable(value = "id") Integer ID) {
+        return "individualTeamPage";
     }
 }

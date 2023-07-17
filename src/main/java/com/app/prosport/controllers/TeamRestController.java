@@ -62,6 +62,11 @@ public class TeamRestController {
         return teamPlayerService.assignPlayerToTeam(ID, playerID);
     }
 
+    @PatchMapping(value = "teams/id/{id}", consumes = "application/json")
+    public void replaceTeamContent(@PathVariable(value = "id") Integer ID, @RequestBody Team newContent) {
+        teamPlayerService.replaceTeamContent(ID, newContent);
+    }
+
     @DeleteMapping(value = "teams/{id}")
     public void removeTeam(@PathVariable(value = "id") Integer ID) {
         teamPlayerService.removeTeam(ID);

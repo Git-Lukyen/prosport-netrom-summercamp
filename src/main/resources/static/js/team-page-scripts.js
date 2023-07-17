@@ -29,8 +29,10 @@ $(document).ready(function () {
     let lastSavedID;
     let lastSavedName;
     let appendTeamsTable = function (data) {
+        let link = baseURL + "teams-section/id/" + data.teamID;
+
         tbody.append("<tr id = \"" + data.teamID + "\"><th scope=\"row\">" + data.teamID + "</th>" +
-            "<td id='name'>" + data.teamName + "</td>" +
+            "<td id='name'><a href=" + link + ">" + data.teamName + "</a></td>" +
             "<td>" + data.registrationDate + "</td>" +
             "<td>" + data.numberOfPlayers + "</td>" +
             "<td><button class='del-team-btn fa fa-close' data-bs-toggle=\"modal\" data-bs-target=\"#del-team-popup\">" + "&times;" + "</button></td></tr>");

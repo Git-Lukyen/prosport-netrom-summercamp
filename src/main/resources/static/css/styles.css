@@ -66,6 +66,11 @@ td {
     text-align: center;
 }
 
+td a {
+    text-decoration: none;
+    color: #282828;
+}
+
 .side-menu {
     height: 100%;
     width: 0;

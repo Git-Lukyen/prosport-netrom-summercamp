@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>StartingPage</title>
+
+        <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+
+        <link href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css" rel="stylesheet"></link>
+        <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.js"></script>
+
+        <link rel="stylesheet" href="http://localhost:8080/css/easySelectStyle.css">
+        <script src="http://localhost:8080/js/easySelect.js"></script>
+
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+              rel="stylesheet">
+
+        <link rel="stylesheet" type="text/css" href="http://localhost:8080/css/indivTeamStyle.css">
+        <link rel="stylesheet" type="text/css" href="http://localhost:8080/css/styles.css">
+
+        <script src="http://localhost:8080/js/scripts.js"></script>
+        <script src="http://localhost:8080/js/indiv-team-js.js"></script>
+    </head>
+
+    <body>
+        <div id="main-div">
+            <div class="top-bar">
+                <a id="open-menu-btn" class="openbtn" href="#">&#9776;</a>
+                <a href="/prosport/">Prosport</a>
+            </div>
+            <div class="container" id="team-main-display">
+                <div id="team-title"></div>
+                <div id="team-details"></div>
+                <table id="team-players-table" class="table table-bordered">
+                    <p id="table-title">Team's Players</p>
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col" id="del-col">Del.</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+                <button id="add-players-select-btn" class="btn">ADD SELECTED</button>
+                <p id="edit-team-lbl">Edit Team Info:</p>
+                <div class="input-group">
+                    <input type="text" id="team_date_picker" placeholder="Reg. Date">
+                </div>
+                <div class="input-group">
+                    <input id="input-team-name" type="text" class="form-control" placeholder="Team Name">
+                </div>
+                <button id="save-changes-btn" class="btn">SAVE CHANGES</button>
+            </div>
+        </div>
+
+        <div class="modal fade" id="unassign-player-popup" tabindex="-1" aria-labelledby="popup-label"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">NO</button>
+                        <button id="popup-confirm-btn" type="button" class="btn btn-primary" data-bs-dismiss="modal">
+                            YES
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

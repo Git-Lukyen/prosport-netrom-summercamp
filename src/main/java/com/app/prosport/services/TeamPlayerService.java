@@ -32,6 +32,20 @@ public class TeamPlayerService {
         return playerRepository.findById(ID);
     }
 
+    public List<Player> findPlayersInTeam(Integer teamID) {
+        Team foundTeam = teamRepository.findById(teamID).get();
+
+        return foundTeam.getPlayers();
+    }
+
+    public List<Player> findPlayersNotInTeam(Integer teamID) {
+        List<Player> teamPlayers = findPlayersInTeam(teamID);
+        List<Player> allPlayers = getAllPlayers();
+
+        allPlayers.removeAll(teamPlayers);
+        return allPlayers;
+    }
+
     public Optional<List<Player>> findPlayersByFirstName(String firstName) {
         return playerRepository.findAllByFirstName(firstName);
     }
@@ -91,6 +105,12 @@ public class TeamPlayerService {
         return playerRepository.saveAll(players);
     }
 
+    public void unassignPlayer(Integer playerID) {
+        Player foundPlayer = playerRepository.findById(playerID).get();
+        foundPlayer.setAssignedTeam(null);
+        playerRepository.save(foundPlayer);
+    }
+
     public void deletePlayerById(Integer ID) {
         playerRepository.deleteById(ID);
     }
@@ -146,6 +166,15 @@ public class TeamPlayerService {
         playerRepository.save(foundPlayer);
 
         return Optional.of(foundPlayer);
+    }
+
+    public void replaceTeamContent(Integer teamID, Team newContent) {
+        Team foundTeam = teamRepository.findById(teamID).get();
+
+        foundTeam.setTeamName(newContent.getTeamName());
+        foundTeam.setRegistrationDate(newContent.getRegistrationDate());
+
+        teamRepository.save(foundTeam);
     }
 
     public void removeTeam(Integer ID) {
