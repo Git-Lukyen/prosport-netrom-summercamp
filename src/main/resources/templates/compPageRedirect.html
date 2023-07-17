@@ -10,6 +10,9 @@
         <link href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css" rel="stylesheet"></link>
         <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.js"></script>
 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/additional-methods.min.js"></script>
+
         <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
         <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
@@ -42,20 +45,23 @@
         </div>
 
         <div id="main-div">
-            <div class = "top-bar">
+            <div class="top-bar">
                 <a id="open-menu-btn" class="openbtn" href="#">&#9776;</a>
                 <a href="/prosport/">Prosport</a>
             </div>
             <div id="comp-menu">
-                <div class="input-group">
-                    <input id="input-comp-name" type="text" class="form-control" placeholder="Name">
-                </div>
-                <div class="input-group">
-                    <input id="input-location" type="text" class="form-control" placeholder="Location">
-                </div>
-                <div class="input-group">
-                    <input type="text" id="date_picker" placeholder="Start Date">
-                </div>
+                <form id="input-form">
+                    <div class="input-group">
+                        <input id="input-comp-name" name="compName" type="text" class="form-control" placeholder="Name">
+                    </div>
+                    <div class="input-group">
+                        <input id="input-location" name="address" type="text" class="form-control"
+                               placeholder="Location">
+                    </div>
+                    <div class="input-group">
+                        <input type="text" name="compStart" id="date_picker" placeholder="Start Date">
+                    </div>
+                </form>
                 <button id="add-comp-btn" class="btn">ADD COMPETITION</button>
             </div>
 

@@ -2,6 +2,7 @@ package com.app.prosport.dbobjects;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,6 +21,7 @@ public class Team {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer teamID;
 
+    @NotEmpty(message = "Team name required")
     @Column
     private String teamName;
 

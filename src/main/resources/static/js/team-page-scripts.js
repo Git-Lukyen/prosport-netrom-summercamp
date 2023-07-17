@@ -2,7 +2,27 @@ $(document).ready(function () {
     let baseURL = "http://localhost:8080/prosport/";
     let tbody = $("tbody");
 
+    $("#input-form").validate({
+        rules: {
+            teamName: {
+                required: true,
+                minlength: 3,
+                lettersonly: true
+            }
+        },
+        messages: {
+            teamName: {
+                required: "Team name required.",
+                minlength: "Name must have at least 3 characters.",
+                lettersonly: "Numbers not allowed."
+            }
+        }
+    });
+
     $("#add-team-btn").click(function () {
+        if (!$("#input-form").valid())
+            return;
+
         let name = $("#team-menu #add-input").val();
         let data = {teamName: name};
         data = JSON.stringify(data);

@@ -39,8 +39,8 @@ $(document).ready(function () {
         $('.unassign-player-btn').click(function () {
             lastSavedID = $(this).parent().parent().attr("ID");
             lastSavedName = $("#" + lastSavedID + " #name").text();
-            $(".modal-body").empty();
-            $(".modal-body").append("<h3>Remove player " + lastSavedName + " from the team?</h3>");
+            $("#unassign-player-popup .modal-body").empty();
+            $("#unassign-player-popup .modal-body").append("<h3>Remove player " + lastSavedName + " from the team?</h3>");
         });
     };
 

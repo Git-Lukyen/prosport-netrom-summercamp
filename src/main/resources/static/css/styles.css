@@ -180,6 +180,19 @@ td a {
 
 #player-menu #add-player-btn {
     margin-bottom: 20px;
+    left: 111px;
+    top: 318px;
+    position: absolute;
+    width: 160px;
+}
+
+#comp-menu #add-comp-btn {
+    margin-bottom: 20px;
+    left: 60px;
+    top: 200px;
+    position: absolute;
+    width: 180px;
+    height: 37px;
 }
 
 #del-col {
@@ -198,4 +211,48 @@ td a {
 
 #teams-table_wrapper, #players-table_wrapper, #comp-table_wrapper {
     display: flow-root;
+}
+
+#player-menu label.error {
+    position: absolute;
+    color: red;
+    font-size: 1rem;
+    display: block;
+    margin-top: -21px;
+}
+
+#team-menu label.error {
+    position: absolute;
+    color: red;
+    font-size: 1rem;
+    display: block;
+    margin-top: 5px;
+}
+
+#comp-menu label.error {
+    position: absolute;
+    color: red;
+    font-size: 1rem;
+    display: block;
+    margin-top: -17px;
+}
+
+#player-menu #input-form {
+    width: 300px;
+    left: 42px;
+    position: absolute;
+}
+
+#player-menu .input-group{
+    margin-bottom: 25px;
+}
+
+#comp-menu #input-form {
+    width: 300px;
+    left: 2px;
+    position: absolute;
+}
+
+#comp-menu .input-group{
+    margin-bottom: 25px;
 }

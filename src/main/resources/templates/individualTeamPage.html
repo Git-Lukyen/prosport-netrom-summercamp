@@ -50,14 +50,10 @@
                     </tbody>
                 </table>
                 <button id="add-players-select-btn" class="btn">ADD SELECTED</button>
-                <p id="edit-team-lbl">Edit Team Info:</p>
-                <div class="input-group">
-                    <input type="text" id="team_date_picker" placeholder="Reg. Date">
-                </div>
-                <div class="input-group">
-                    <input id="input-team-name" type="text" class="form-control" placeholder="Team Name">
-                </div>
-                <button id="save-changes-btn" class="btn">SAVE CHANGES</button>
+                <button id="modify-team-btn" class='btn fa fa-close' data-bs-toggle="modal"
+                        data-bs-target="#modify-team-popup">
+                    EDIT TEAM
+                </button>
             </div>
         </div>
 
@@ -76,5 +72,31 @@
                 </div>
             </div>
         </div>
+
+        <div class="modal fade" id="modify-team-popup" tabindex="-1" aria-labelledby="popup-label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <h3>Modifying Team...</h3>
+                        <form id="input-form">
+                            <div class="input-group">
+                                <input id="add-input" name="teamName" type="text" class="form-control"
+                                       placeholder="Team Name">
+                            </div>
+                            <div class="input-group">
+                                <input type="text" name="compStart" id="date_picker" placeholder="Registration Date">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCEL</button>
+                        <button id="popup-save-changes" type="button" class="btn btn-primary" data-bs-dismiss="modal">
+                            SAVE CHANGES
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </body>
 </html>

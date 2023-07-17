@@ -2,7 +2,73 @@ $(document).ready(function () {
     let baseURL = "http://localhost:8080/prosport/";
     let tbody = $("tbody");
 
+    $("#input-form").validate({
+        rules: {
+            firstName: {
+                required: true,
+                minlength: 3,
+                lettersonly: true
+            },
+            lastName: {
+                required: true,
+                minlength: 3,
+                lettersonly: true
+            },
+            age: {
+                required: true,
+                min: 5,
+                max: 75,
+                digits: true
+            },
+            height: {
+                required: true,
+                min: 60,
+                max: 250,
+                digits: true
+            },
+            weight: {
+                required: true,
+                min: 20,
+                max: 500,
+                digits: true
+            }
+        },
+        messages: {
+            firstName: {
+                required: "First name required.",
+                minlength: "First name must have at least 3 characters.",
+                lettersonly: "First name cannot contain numbers."
+            },
+            lastName: {
+                required: "Last name required.",
+                minlength: "Last name must have at least 3 characters.",
+                lettersonly: "Last name cannot include numbers."
+            },
+            age: {
+                required: "Age is required.",
+                min: "Minimum age allowed is 5.",
+                max: "Maximum age allowed is 75",
+                digits: "Age cannot contain letters."
+            },
+            height: {
+                required: "Height is required",
+                min: "Minimum height allowed is 60cm.",
+                max: "Maximum height allowed is 250cm.",
+                digits: "Height cannot contain letters."
+            },
+            weight: {
+                required: "Weight is required.",
+                min: "Minimum weight allowed is 20kg.",
+                max: "Maximum weight allowed is 500kg.",
+                digits: "Weight cannot contain letters."
+            }
+        }
+    });
+
     $("#add-player-btn").click(function () {
+        if (!$("#input-form").valid())
+            return;
+
         let data =
             {
                 firstName: $("#input-first-name").val(),

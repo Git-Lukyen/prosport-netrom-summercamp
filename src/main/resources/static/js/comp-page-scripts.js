@@ -2,6 +2,37 @@ $(document).ready(function () {
     let baseURL = "http://localhost:8080/prosport/";
     let tbody = $("tbody");
 
+    $("#input-form").validate({
+        rules: {
+            compName: {
+                required: true,
+                minlength: 3,
+                lettersonly: true
+            },
+            address: {
+                required: true,
+                minlength: 10,
+            },
+            compStart: {
+                required: true,
+            }
+        },
+        messages: {
+            compName: {
+                required: "Name is required.",
+                minlength: "Name must have at least 3 characters.",
+                lettersonly: "Competition name cannot include numbers"
+            },
+            address: {
+                required: "Address is required.",
+                minlength: "Address must have at least 10 characters.",
+            },
+            compStart: {
+                required: "Start date is required.",
+            }
+        }
+    });
+
     $(function () {
         $("#date_picker").datepicker(
             {
@@ -12,6 +43,9 @@ $(document).ready(function () {
     });
 
     $("#add-comp-btn").click(function () {
+        if (!$("#input-form").valid())
+            return;
+
         let data =
             {
                 compName: $("#input-comp-name").val(),

@@ -19,9 +19,10 @@
 #team-title {
     border-bottom: solid 2px;
     padding-left: 1%;
+    padding-bottom: 0.5%;
 }
 
-#edit-team-lbl{
+#edit-team-lbl {
     position: absolute;
     top: 262px;
 }
@@ -140,7 +141,7 @@ td a {
 #input-team-name {
     position: absolute;
     width: 250px !important;
-    top: -40px;
+    top: 286px;
     height: 30px;
     text-align: center;
     background: #f8f4f4;
@@ -148,16 +149,16 @@ td a {
 
 #team_date_picker {
     position: absolute;
-    top: -7px;
-    left: 30px;
+    top: 318px;
+    left: 186px;
     text-align: center;
     background: #f8f4f4;
 }
 
-#save-changes-btn {
+#modify-team-btn {
     position: absolute !important;
     background: #dec3eb;
     font-size: revert;
-    top: 365px;
-    left: 227px;
+    top: 109px;
+    left: 1103px;
 }
