@@ -21,9 +21,19 @@ public class UIController {
         return "teamsPageRedirect";
     }
 
+    @GetMapping(value = "teams-section/id/{id}")
+    public String indivTeamPageHTML(@PathVariable(value = "id") Integer ID) {
+        return "individualTeamPage";
+    }
+
     @GetMapping(value = "players-section")
     public String playersPageHTML() {
         return "playersPageRedirect";
+    }
+
+    @GetMapping(value = "players-section/id/{id}")
+    public String indivPlayerPageHTML(@PathVariable(value = "id") Integer ID) {
+        return "individualPlayerPage";
     }
 
     @GetMapping(value = "comp-section")
@@ -34,10 +44,5 @@ public class UIController {
     @GetMapping(value = "testing-page")
     public String testPageHTML() {
         return "testPage";
-    }
-
-    @GetMapping(value = "teams-section/id/{id}")
-    public String indivTeamPageHTML(@PathVariable(value = "id") Integer ID) {
-        return "individualTeamPage";
     }
 }

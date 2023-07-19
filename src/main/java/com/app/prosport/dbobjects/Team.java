@@ -1,6 +1,7 @@
 package com.app.prosport.dbobjects;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Getter;
@@ -29,15 +30,18 @@ public class Team {
     private LocalDate registrationDate;
 
     @OneToMany(mappedBy = "assignedTeam")
+    @JsonIgnore
     private List<Player> players = new ArrayList<>();
 
     private Integer numberOfPlayers = players.size();
 
     @ManyToMany(mappedBy = "registeredTeams")
+    @JsonIgnore
     private List<Competition> assignedComps;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "team_game", joinColumns = {@JoinColumn(name = "team_id")}, inverseJoinColumns = {@JoinColumn(name = "game_id")})
+    @JsonIgnore
     private List<Game> registeredGames = new ArrayList<>();
 
     public Integer getNumberOfPlayers() {

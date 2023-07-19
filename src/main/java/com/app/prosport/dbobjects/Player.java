@@ -1,7 +1,6 @@
 package com.app.prosport.dbobjects;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -24,7 +23,6 @@ public class Player {
 
     @ManyToOne(optional = true)
     @JoinColumn(name = "teamid")
-    @JsonIgnore
     private Team assignedTeam;
 
     @NotEmpty(message = "First name required")
@@ -34,6 +32,9 @@ public class Player {
 
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate registrationDate;
+
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate assignDate;
 
     //Years, Centimeters, Kilograms
     @NotNull(message = "Age required")

@@ -162,6 +162,7 @@ public class TeamPlayerService {
             return null;
 
         foundPlayer.setAssignedTeam(foundTeam);
+        foundPlayer.setAssignDate(LocalDate.now());
 
         playerRepository.save(foundPlayer);
 

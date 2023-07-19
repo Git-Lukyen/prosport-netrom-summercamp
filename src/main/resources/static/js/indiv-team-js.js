@@ -2,9 +2,33 @@ $(document).ready(function () {
     let baseURL = "http://localhost:8080/prosport/";
     var url = window.location.pathname;
     var id = url.substring(url.lastIndexOf('/') + 1);
+    let nrPlayers;
 
     console.log(id);
     let currentTeam;
+
+    $("#input-form").validate({
+        rules: {
+            teamName: {
+                required: true,
+                minlength: 3,
+                lettersonly: true
+            },
+            regDate: {
+                required: true,
+            }
+        },
+        messages: {
+            teamName: {
+                required: "Name is required.",
+                minlength: "Name must have at least 3 characters.",
+                lettersonly: "Name cannot include numbers"
+            },
+            regDate: {
+                required: "Registration date is required.",
+            }
+        }
+    });
 
     function updateDetails() {
         $.ajax({
@@ -17,12 +41,19 @@ $(document).ready(function () {
                 $("#team-title").empty();
                 $("#team-details").empty();
 
+                nrPlayers = data.numberOfPlayers;
+
+                if (data.numberOfPlayers >= 12)
+                    $("#full-team-alert").css("display", "block");
+                else
+                    $("#full-team-alert").css("display", "none");
+
                 $("#team-title").append("<h3>" + id + " - " + data.teamName + "</h3>");
                 $("#team-details").append("<p> Registration Date: " + data.registrationDate + "</p>" +
                     "<p> Number Of Players: " + data.numberOfPlayers + "</p>");
 
-                $('#team_date_picker').datepicker({dateFormat: 'yy-mm-dd'}).datepicker('setDate', data.registrationDate);
-                $("#input-team-name").val(data.teamName);
+                $('#date_picker').datepicker({dateFormat: 'yy-mm-dd'}).datepicker('setDate', data.registrationDate);
+                $("#add-input").val(data.teamName);
             }
         });
     }
@@ -32,8 +63,10 @@ $(document).ready(function () {
     let lastSavedID;
     let lastSavedName;
     let appendPlayersTable = function (data) {
-        $("#team-players-table tbody").append("<tr id = \"" + data.playerID + "\"><th scope=\"row\">" + data.playerID + "</th>" +
-            "<td id='name'>" + data.firstName + " " + data.lastName + "</td>" +
+        let link = baseURL + "players-section/id/" + data.playerID;
+
+        $("#team-players-table tbody").append("<tr id = \"" + data.playerID + "\"><th scope=\"row\">" + data.assignDate + "</th>" +
+            "<td id='name'><a href=" + link + ">" + data.firstName + " " + data.lastName + "</a></td>" +
             "<td><button class='unassign-player-btn fa fa-close' data-bs-toggle=\"modal\" data-bs-target=\"#unassign-player-popup\">" + "&times;" + "</button></td></tr>");
 
         $('.unassign-player-btn').click(function () {
@@ -43,6 +76,17 @@ $(document).ready(function () {
             $("#unassign-player-popup .modal-body").append("<h3>Remove player " + lastSavedName + " from the team?</h3>");
         });
     };
+
+    $("#delete-confirm-btn").click(function () {
+        $.ajax({
+            type: "DELETE",
+            url: baseURL + "teams/" + id,
+            contentType: "application/json",
+            success: function () {
+                window.location.replace(baseURL + "teams-section")
+            }
+        });
+    });
 
     $("#popup-confirm-btn").click(function () {
         $.ajax({
@@ -56,9 +100,12 @@ $(document).ready(function () {
         });
     });
 
-    $("#save-changes-btn").click(function () {
-        let newName = $('#input-team-name').val();
-        let newRegDate = $("#team_date_picker").val();
+    $("#popup-save-changes").click(function () {
+        if (!$("#input-form").valid())
+            return;
+
+        let newName = $('#add-input').val();
+        let newRegDate = $("#date_picker").val();
 
         let data = {
             teamName: newName,
@@ -72,6 +119,7 @@ $(document).ready(function () {
             contentType: "application/json",
             success: function (data) {
                 updateDetails();
+                $("#close-edit").click();
             }
         });
     });
@@ -126,6 +174,10 @@ $(document).ready(function () {
     $("#add-players-select-btn").click(function () {
         let selectedPlayerIDs = $("#add-players-select").val();
         $.each(selectedPlayerIDs, function (index) {
+            if (nrPlayers >= 12)
+                return;
+            nrPlayers++;
+
             $.ajax({
                 type: "POST",
                 url: baseURL + "players/id/" + selectedPlayerIDs[index] + "/assign-team/" + id,

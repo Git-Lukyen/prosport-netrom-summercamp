@@ -22,6 +22,7 @@ public class Competition {
     private String compLocation;
 
     private LocalDate compStart;
+    private LocalDate compEnd;
 
     private Integer numberOfTeams;
     private Integer numberOfGames;

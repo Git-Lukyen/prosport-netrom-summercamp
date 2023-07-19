@@ -101,8 +101,10 @@ $(document).ready(function () {
     let lastSavedID;
     let lastSavedName;
     let appendPlayersTable = function (data) {
+        let link = baseURL + "players-section/id/" + data.playerID;
+
         tbody.append("<tr id = \"" + data.playerID + "\"><th scope=\"row\">" + data.playerID + "</th>" +
-            "<td id='name'>" + data.firstName + " " + data.lastName + "</td>" +
+            "<td id='name'><a href=" + link + ">" + data.firstName + " " + data.lastName + "</a></td>" +
             "<td>" + data.age + "</td>" +
             "<td>" + data.height + "</td>" +
             "<td>" + data.weight + "</td>" +

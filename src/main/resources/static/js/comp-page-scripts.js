@@ -21,7 +21,7 @@ $(document).ready(function () {
             compName: {
                 required: "Name is required.",
                 minlength: "Name must have at least 3 characters.",
-                lettersonly: "Competition name cannot include numbers"
+                lettersonly: "Name cannot include numbers"
             },
             address: {
                 required: "Address is required.",

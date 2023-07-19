@@ -8,6 +8,7 @@
     padding: 2vh;
     overflow-x: clip;
     min-height: 50vh;
+    margin-bottom: 25px;
 }
 
 #team-details {
@@ -160,5 +161,49 @@ td a {
     background: #dec3eb;
     font-size: revert;
     top: 109px;
-    left: 1103px;
+    left: 1110px;
+}
+
+#delete-team-btn {
+    position: absolute !important;
+    background: #dec3eb;
+    font-size: revert;
+    top: 109px;
+    left: 1210px;
+}
+
+#date_picker {
+    width: 300px;
+    position: relative;
+    left: 80px;
+    text-align: center;
+}
+
+#add-input {
+    width: 300px;
+    border: solid 1px;
+    position: relative;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    left: 80px;
+    text-align: center;
+}
+
+.input-group {
+    width: 300px;
+}
+
+label.error {
+    position: absolute;
+    color: red;
+    font-size: 1rem;
+    display: block;
+}
+
+#full-team-alert {
+    position: absolute;
+    left: 744px;
+    top: 207px;
+    display: none;
+    color: red;
 }
