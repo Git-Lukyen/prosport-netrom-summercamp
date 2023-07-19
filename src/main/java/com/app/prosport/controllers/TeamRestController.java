@@ -47,6 +47,16 @@ public class TeamRestController {
         return teamPlayerService.filterTeamsByDate(from, to);
     }
 
+    @GetMapping(value = "teams/in-comp/{id}")
+    public List<Team> getTeamsInComp(@PathVariable(value = "id") Integer ID) {
+        return teamPlayerService.getTeamsInComp(ID);
+    }
+
+    @GetMapping(value = "teams/not-in-comp/{id}")
+    public List<Team> getTeamsNotInComp(@PathVariable(value = "id") Integer ID) {
+        return teamPlayerService.getTeamsNotInComp(ID);
+    }
+
     @PostMapping(value = "teams/add/single", consumes = "application/json")
     public Team addTeam(@RequestBody Team team) {
         return teamPlayerService.addTeam(team);
@@ -62,9 +72,21 @@ public class TeamRestController {
         return teamPlayerService.assignPlayerToTeam(ID, playerID);
     }
 
+    @PostMapping(value = "teams/assign-comp/{compid}")
+    public void assignTeamToComp(@RequestBody List<Integer> teamIDs, @PathVariable(value = "compid") Integer compID) {
+        for (Integer ID : teamIDs) {
+            teamPlayerService.assignTeamToComp(ID, compID);
+        }
+    }
+
     @PatchMapping(value = "teams/id/{id}", consumes = "application/json")
     public void replaceTeamContent(@PathVariable(value = "id") Integer ID, @RequestBody Team newContent) {
         teamPlayerService.replaceTeamContent(ID, newContent);
+    }
+
+    @PatchMapping(value = "teams/id/{id}/unassign-comp/{compid}")
+    public void unassignComp(@PathVariable(value = "id") Integer ID, @PathVariable(value = "compid") Integer compID) {
+        teamPlayerService.unassignComp(ID, compID);
     }
 
     @DeleteMapping(value = "teams/{id}")

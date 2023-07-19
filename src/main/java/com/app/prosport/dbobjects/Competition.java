@@ -48,4 +48,16 @@ public class Competition {
         return scheduledGames.size();
     }
 
+    public void addTeam(Team team) {
+        registeredTeams.add(team);
+    }
+
+    public void removeTeam(Team team) {
+        registeredTeams.remove(team);
+    }
+
+    public void clearTeams(){
+        registeredTeams.clear();
+    }
+
 }

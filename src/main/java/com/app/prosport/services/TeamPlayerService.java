@@ -1,6 +1,8 @@
 package com.app.prosport.services;
 
+import com.app.prosport.dbobjects.Competition;
 import com.app.prosport.dbobjects.Player;
+import com.app.prosport.repositories.CompRepository;
 import com.app.prosport.repositories.PlayerRepository;
 import com.app.prosport.dbobjects.Team;
 import com.app.prosport.repositories.TeamRepository;
@@ -22,6 +24,9 @@ public class TeamPlayerService {
 
     @Autowired
     private TeamRepository teamRepository;
+
+    @Autowired
+    CompRepository compRepository;
 
     //Player Related
     public List<Player> getAllPlayers() {
@@ -105,6 +110,19 @@ public class TeamPlayerService {
         return playerRepository.saveAll(players);
     }
 
+    public void replacePlayerContent(Integer playerID, Player newContent) {
+        Player foundPlayer = playerRepository.findById(playerID).get();
+
+        foundPlayer.setRegistrationDate(newContent.getRegistrationDate());
+        foundPlayer.setFirstName(newContent.getFirstName());
+        foundPlayer.setLastName(newContent.getLastName());
+        foundPlayer.setAge(newContent.getAge());
+        foundPlayer.setHeight(newContent.getHeight());
+        foundPlayer.setWeight(newContent.getWeight());
+
+        playerRepository.save(foundPlayer);
+    }
+
     public void unassignPlayer(Integer playerID) {
         Player foundPlayer = playerRepository.findById(playerID).get();
         foundPlayer.setAssignedTeam(null);
@@ -144,6 +162,19 @@ public class TeamPlayerService {
         return teamRepository.findByRegistrationDateBetween(from, to, Sort.by("registrationDate"));
     }
 
+    public List<Team> getTeamsInComp(Integer compID) {
+        Competition foundComp = compRepository.findById(compID).get();
+        return foundComp.getRegisteredTeams();
+    }
+
+    public List<Team> getTeamsNotInComp(Integer compID) {
+        List<Team> allTeams = getAllTeams();
+        List<Team> teamsInComp = getTeamsInComp(compID);
+
+        allTeams.removeAll(teamsInComp);
+        return allTeams;
+    }
+
     public Team addTeam(Team team) {
         if (team.getRegistrationDate() == null)
             team.setRegistrationDate(LocalDate.now());
@@ -169,6 +200,22 @@ public class TeamPlayerService {
         return Optional.of(foundPlayer);
     }
 
+    public void assignTeamToComp(Integer teamID, Integer compID) {
+        Team foundTeam = teamRepository.findById(teamID).get();
+        Competition foundComp = compRepository.findById(compID).get();
+
+        if (foundComp.getNumberOfTeams() >= 16)
+            return;
+
+        foundTeam.setAssignDate(LocalDate.now());
+
+        foundComp.addTeam(foundTeam);
+        foundTeam.addCompetition(foundComp);
+
+        teamRepository.save(foundTeam);
+        compRepository.save(foundComp);
+    }
+
     public void replaceTeamContent(Integer teamID, Team newContent) {
         Team foundTeam = teamRepository.findById(teamID).get();
 
@@ -176,6 +223,17 @@ public class TeamPlayerService {
         foundTeam.setRegistrationDate(newContent.getRegistrationDate());
 
         teamRepository.save(foundTeam);
+    }
+
+    public void unassignComp(Integer teamID, Integer compID) {
+        Team foundTeam = teamRepository.findById(teamID).get();
+        Competition foundComp = compRepository.findById(compID).get();
+
+        foundTeam.removeCompetition(foundComp);
+        foundComp.removeTeam(foundTeam);
+
+        teamRepository.save(foundTeam);
+        compRepository.save(foundComp);
     }
 
     public void removeTeam(Integer ID) {

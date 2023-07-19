@@ -116,6 +116,11 @@ public class PlayerRestController {
         teamPlayerService.unassignPlayer(playerID);
     }
 
+    @PatchMapping(value = "players/id/{id}", consumes = "application/json")
+    public void replacePlayerContent(@PathVariable(value = "id") Integer ID, @RequestBody Player newContent) {
+        teamPlayerService.replacePlayerContent(ID, newContent);
+    }
+
     @DeleteMapping(value = "players/{id}")
     public void deleteByID(@PathVariable(value = "id") Integer ID) {
         teamPlayerService.deletePlayerById(ID);

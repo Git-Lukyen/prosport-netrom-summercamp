@@ -41,6 +41,11 @@ public class UIController {
         return "compPageRedirect";
     }
 
+    @GetMapping(value = "comp-section/id/{id}")
+    public String indivCompPageHTML(@PathVariable(value = "id") Integer ID) {
+        return "individualCompPage";
+    }
+
     @GetMapping(value = "testing-page")
     public String testPageHTML() {
         return "testPage";

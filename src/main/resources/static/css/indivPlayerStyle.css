@@ -63,8 +63,20 @@ input {
     margin-bottom: 3px;
     left: 80px;
     text-align: center;
+    border: solid 1px;
+}
+
+#date_picker {
+    width: 300px;
+    position: relative;
+    left: 80px;
+    text-align: center;
 }
 
 .input-group {
     width: 300px;
+}
+
+.form-control {
+    border: solid 1px;
 }

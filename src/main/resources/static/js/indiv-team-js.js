@@ -7,6 +7,10 @@ $(document).ready(function () {
     console.log(id);
     let currentTeam;
 
+    jQuery.validator.addMethod("lettersonly", function (value, element) {
+        return this.optional(element) || /^[a-z\s]+$/i.test(value);
+    });
+
     $("#input-form").validate({
         rules: {
             teamName: {

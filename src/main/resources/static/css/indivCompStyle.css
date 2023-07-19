@@ -1,0 +1,219 @@
+#comp-main-display {
+    background: #282828;
+    margin: auto;
+    margin-top: 2%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    color: #f8f4f4;
+    width: 80%;
+    padding: 2vh;
+    overflow-x: clip;
+    min-height: 50vh;
+    margin-bottom: 25px;
+}
+
+#comp-details {
+    padding-top: 4vh;
+    padding-left: 1%;
+    line-height: 50%;
+}
+
+#comp-title {
+    border-bottom: solid 2px;
+    padding-left: 1%;
+    padding-bottom: 0.5%;
+}
+
+#edit-comp-lbl {
+    position: absolute;
+    top: 262px;
+}
+
+#comp-teams-table {
+    width: 50%;
+    border: 1px solid;
+}
+
+.dataTables_paginate {
+    display: none;
+}
+
+#table-title {
+    margin-left: 52%;
+    margin-top: -3.25%;
+    font-size: large;
+    position: absolute;
+    text-decoration: underline 1.5px;
+}
+
+#comp-teams-table_wrapper {
+    margin-top: -4.5%;
+    right: -25%;
+}
+
+#comp-teams-table tr:nth-child(odd) {
+    background-color: #f0d8f8;
+    text-color: #282828;
+}
+
+#comp-teams-table tr:nth-child(even) {
+    background-color: #dec3eb;
+    text-color: #dee2e6;
+}
+
+#comp-teams-table thead tr th {
+    background-color: #f8f4f4;
+    text-align: center;
+}
+
+#comp-teams-table thead {
+    color: #282828;
+}
+
+#comp-teams-table_filter {
+    padding-right: 25.1%;
+    padding-bottom: 1%;
+}
+
+#comp-teams-table_info {
+    margin-left: 25%;
+    margin-top: -1%;
+    font-size: small;
+}
+
+#comp-teams-table_paginate {
+    position: absolute;
+    margin-left: 58%;
+    margin-top: 0%;
+    color: white;
+}
+
+#comp-teams-table_length {
+    margin-left: 25%;
+
+}
+
+th {
+    text-align: center;
+}
+
+td {
+    text-align: center;
+}
+
+td a {
+    text-decoration: none;
+    color: #282828;
+}
+
+#add-teams-select-btn {
+    position: absolute !important;
+    background: #dec3eb;
+    font-size: revert;
+    top: 230px;
+    left: 543px;
+}
+
+.easySelect {
+    position: absolute !important;
+    width: 200px !important;
+    top: 273px;
+    left: 500px;
+}
+
+.styledSelect {
+    background: #f8f4f4;
+}
+
+td a {
+    text-decoration: none;
+    color: #282828;
+}
+
+#del-col {
+    width: 0px !important;
+}
+
+.unassign-team-btn {
+    font-size: large;
+    background: #ff8787;
+    width: 2.5vw;
+}
+
+#comp_date_picker {
+    position: absolute;
+    top: 318px;
+    left: 186px;
+    text-align: center;
+    background: #f8f4f4;
+}
+
+#modify-comp-btn {
+    position: absolute !important;
+    background: #dec3eb;
+    font-size: revert;
+    top: 109px;
+    left: 1008px;
+}
+
+#delete-comp-btn {
+    position: absolute !important;
+    background: #dec3eb;
+    font-size: revert;
+    top: 109px;
+    left: 1160px;
+}
+
+#date_picker {
+    width: 300px;
+    position: relative;
+    left: 80px;
+    text-align: center;
+}
+
+#add-input {
+    width: 300px;
+    border: solid 1px;
+    position: relative;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    left: 80px;
+    text-align: center;
+}
+
+.input-group input {
+    width: 300px;
+    border: solid 1px;
+    position: relative;
+    margin-top: 25px;
+    margin-bottom: 3px;
+    left: 80px;
+    text-align: center;
+    border: solid 1px;
+}
+
+.input-group {
+    width: 300px;
+}
+
+label.error {
+    position: absolute;
+    color: red;
+    font-size: 1rem;
+    display: block;
+}
+
+#full-comp-alert {
+    position: absolute;
+    left: 744px;
+    top: 228px;
+    display: none;
+    color: red;
+}
+
+.input-group {
+    width: 300px;
+}
+
+.form-control {
+    border: solid 1px;
+}

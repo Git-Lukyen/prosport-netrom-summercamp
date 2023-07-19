@@ -12,6 +12,13 @@
                     "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src=
                     "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.min.js"></script>
+
+    <script src="http://localhost:8080/js/test-scripts.js"></script>
+
+    <script src="http://localhost:8080/js/jquery.bracket.min.js"></script>
+
+    <link href="http://localhost:8080/css/jquery.bracket.min.css" rel="stylesheet">
+
     <style>
         .container {
             width: 70%;
@@ -31,41 +38,43 @@
     </style>
 
     <body>
-        <div class="container">
-            <h2>Line Chart</h2>
-            <div>
-                <canvas id="myChart"></canvas>
-            </div>
+        <!--        <div class="container">-->
+        <!--            <h2>Line Chart</h2>-->
+        <!--            <div>-->
+        <!--                <canvas id="myChart"></canvas>-->
+        <!--            </div>-->
+        <!--        </div>-->
+        <div class="demo">
         </div>
     </body>
 
-    <script>
-        let ctx = document.getElementById("myChart").getContext("2d");
-        let myChart = new Chart(ctx, {
-            type: "line",
-            data: {
-                labels: [
-                    "Monday",
-                    "Tuesday",
-                    "Wednesday",
-                    "Thursday",
-                    "Friday",
-                    "Saturday",
-                    "Sunday",
-                ],
-                datasets: [
-                    {
-                        label: "work load",
-                        data: [2, 9, 3, 17, 6, 3, 7],
-                        backgroundColor: "rgba(153,205,1,0.6)",
-                    },
-                    {
-                        label: "free hours",
-                        data: [2, 2, 5, 5, 2, 1, 10],
-                        backgroundColor: "rgba(155,153,10,0.6)",
-                    },
-                ],
-            },
-        });
-    </script>
+    <!--    <script>-->
+    <!--        let ctx = document.getElementById("myChart").getContext("2d");-->
+    <!--        let myChart = new Chart(ctx, {-->
+    <!--            type: "line",-->
+    <!--            data: {-->
+    <!--                labels: [-->
+    <!--                    "Monday",-->
+    <!--                    "Tuesday",-->
+    <!--                    "Wednesday",-->
+    <!--                    "Thursday",-->
+    <!--                    "Friday",-->
+    <!--                    "Saturday",-->
+    <!--                    "Sunday",-->
+    <!--                ],-->
+    <!--                datasets: [-->
+    <!--                    {-->
+    <!--                        label: "work load",-->
+    <!--                        data: [2, 9, 3, 17, 6, 3, 7],-->
+    <!--                        backgroundColor: "rgba(153,205,1,0.6)",-->
+    <!--                    },-->
+    <!--                    {-->
+    <!--                        label: "free hours",-->
+    <!--                        data: [2, 2, 5, 5, 2, 1, 10],-->
+    <!--                        backgroundColor: "rgba(155,153,10,0.6)",-->
+    <!--                    },-->
+    <!--                ],-->
+    <!--            },-->
+    <!--        });-->
+    <!--    </script>-->
 </html>

@@ -39,6 +39,8 @@ public class Team {
     @JsonIgnore
     private List<Competition> assignedComps;
 
+    private LocalDate assignDate;
+
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "team_game", joinColumns = {@JoinColumn(name = "team_id")}, inverseJoinColumns = {@JoinColumn(name = "game_id")})
     @JsonIgnore
@@ -50,5 +52,17 @@ public class Team {
             return 0;
 
         return len;
+    }
+
+    public void addCompetition(Competition comp) {
+        assignedComps.add(comp);
+    }
+
+    public void removeCompetition(Competition comp) {
+        assignedComps.remove(comp);
+    }
+
+    public void clearCompetitions() {
+        assignedComps.clear();
     }
 }

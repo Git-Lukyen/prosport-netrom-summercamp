@@ -2,6 +2,10 @@ $(document).ready(function () {
     let baseURL = "http://localhost:8080/prosport/";
     let tbody = $("tbody");
 
+    jQuery.validator.addMethod("lettersonly", function (value, element) {
+        return this.optional(element) || /^[a-z\s]+$/i.test(value);
+    });
+
     $("#input-form").validate({
         rules: {
             firstName: {

@@ -2,6 +2,10 @@ $(document).ready(function () {
     let baseURL = "http://localhost:8080/prosport/";
     let tbody = $("tbody");
 
+    jQuery.validator.addMethod("lettersonly", function (value, element) {
+        return this.optional(element) || /^[a-z\s]+$/i.test(value);
+    });
+
     $("#input-form").validate({
         rules: {
             compName: {
@@ -78,8 +82,10 @@ $(document).ready(function () {
     let lastSavedID;
     let lastSavedName;
     let appendCompTable = function (data) {
+        let link = baseURL + "comp-section/id/" + data.compID;
+
         tbody.append("<tr id = \"" + data.compID + "\"><th scope=\"row\">" + data.compID + "</th>" +
-            "<td id='name'>" + data.compName + "</td>" +
+            "<td id='name'><a href=" + link + ">" + data.compName + "</a></td>" +
             "<td>" + data.compLocation + "</td>" +
             "<td>" + data.compStart + "</td>" +
             "<td>" + data.numberOfTeams + "</td>" +

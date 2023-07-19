@@ -20,9 +20,19 @@ public class CompetitionController {
         return compService.getAllCompetitions();
     }
 
+    @GetMapping(value = "comps/id/{id}")
+    public Competition getCompetitionByID(@PathVariable(value = "id") Integer ID) {
+        return compService.getCompetitionByID(ID);
+    }
+
     @PostMapping(value = "comps/add/single", consumes = "application/json")
     public Competition addCompetition(@RequestBody Competition comp) {
         return compService.addCompetition(comp);
+    }
+
+    @PatchMapping(value = "comps/id/{id}")
+    public void replaceCompContent(@PathVariable(value = "id") Integer ID, @RequestBody Competition newContent) {
+        compService.replaceCompContent(ID, newContent);
     }
 
     @DeleteMapping(value = "comps/id/{id}")
