@@ -22,7 +22,8 @@ $(document).ready(function () {
         var container = $('.demo')
         container.bracket({
             init: saveData,
-            save: saveFn
+            save: saveFn,
+            toolbar: false
         });
     });
 });
