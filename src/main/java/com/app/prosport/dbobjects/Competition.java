@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Entity
@@ -26,6 +28,14 @@ public class Competition {
 
     private Integer numberOfTeams;
     private Integer numberOfGames;
+
+    private String bracketData;
+
+    @Transient
+    private List<List<String>> bracketNames;
+
+    @Transient
+    private List<List<Integer>> bracketScores;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "comp_team", joinColumns = {@JoinColumn(name = "comp_id")}, inverseJoinColumns = {@JoinColumn(name = "team_id")})
@@ -56,8 +66,34 @@ public class Competition {
         registeredTeams.remove(team);
     }
 
-    public void clearTeams(){
+    public void clearTeams() {
         registeredTeams.clear();
     }
 
+    public List<List<String>> getBracketNames() {
+        List<List<String>> pairNames = new ArrayList<>();
+        for (Game game : scheduledGames) {
+            if (game.getPlayingTeams().size() == 2) {
+                Team team1 = game.getPlayingTeams().get(0);
+                Team team2 = game.getPlayingTeams().get(1);
+
+                pairNames.add(Arrays.asList(team1.getTeamID() + " - " + team1.getTeamName(), team2.getTeamID() + " - " + team2.getTeamName()));
+            }
+        }
+
+        return pairNames;
+    }
+
+    public List<List<Integer>> getBracketScores() {
+        List<List<Integer>> pairScores = new ArrayList<>();
+        for (Game game : scheduledGames) {
+            pairScores.add(Arrays.asList(game.getScoreRed(), game.getScoreBlue()));
+        }
+
+        return pairScores;
+    }
+
+    public void clearGames() {
+        scheduledGames.clear();
+    }
 }

@@ -7,7 +7,7 @@
     width: 80%;
     padding: 2vh;
     overflow-x: clip;
-    min-height: 50vh;
+    min-height: 100vh;
     margin-bottom: 25px;
 }
 
@@ -113,6 +113,14 @@ td a {
     left: 543px;
 }
 
+#generate-bracket {
+    position: absolute !important;
+    background: #dec3eb;
+    font-size: revert;
+    top: 329px;
+    left: 254px;
+}
+
 .easySelect {
     position: absolute !important;
     width: 200px !important;
@@ -216,4 +224,50 @@ label.error {
 
 .form-control {
     border: solid 1px;
+}
+
+#teams-bracket {
+    position: absolute;
+    top: 400px;
+}
+
+div.jQBracket .team.win {
+    color: #212529;
+    background: #96ffa5;
+}
+
+div.jQBracket .team.lose {
+    color: #212529;
+    background: #ff9696;
+}
+
+div.jQBracket .team {
+    color: #212529;
+    background: #f0d8f8;
+}
+
+div.jQBracket .team.na {
+    color: #212529;
+    background: #c6a1d3;
+}
+
+div.jQBracket .team.highlight {
+    color: #212529;
+    background: #c857ff;
+}
+
+div.jQBracket .connector.highlight {
+    border-color: #c857ff;
+}
+
+div.jQBracket .connector div.connector.highlight {
+    border-color: #c857ff;
+}
+
+#generate-error {
+    color: red;
+    position: absolute;
+    top: 372px;
+    left: 161px;
+    display: none;
 }

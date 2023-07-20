@@ -54,6 +54,14 @@ public class Team {
         return len;
     }
 
+    public void addGame(Game game) {
+        registeredGames.add(game);
+    }
+
+    public void removeGame(Game game) {
+        registeredGames.remove(game);
+    }
+
     public void addCompetition(Competition comp) {
         assignedComps.add(comp);
     }

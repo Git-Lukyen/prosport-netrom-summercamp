@@ -16,6 +16,9 @@
         <link rel="stylesheet" href="http://localhost:8080/css/easySelectStyle.css">
         <script src="http://localhost:8080/js/easySelect.js"></script>
 
+        <script src="http://localhost:8080/js/jquery.bracket.min.js"></script>
+        <link href="http://localhost:8080/css/jquery.bracket.min.css" rel="stylesheet">
+
         <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
         <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
@@ -54,6 +57,7 @@
                     </tbody>
                 </table>
                 <button id="add-teams-select-btn" class="btn">ADD SELECTED</button>
+
                 <button id="modify-comp-btn" class='btn fa fa-close' data-bs-toggle="modal"
                         data-bs-target="#modify-comp-popup">
                     EDIT COMPETITION
@@ -62,6 +66,8 @@
                         data-bs-target="#del-comp-popup">
                     DELETE COMPETITION
                 </button>
+                <p id="generate-error">Couldn't generate bracket. (No. Teams must be a power of 2)</p>
+                <button id="generate-bracket" class="btn">GENERATE BRACKET</button>
             </div>
         </div>
 

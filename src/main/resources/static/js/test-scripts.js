@@ -16,6 +16,7 @@ $(document).ready(function () {
     };
 
     function saveFn(data, userData) {
+        console.log(data);
     }
 
     $(function () {

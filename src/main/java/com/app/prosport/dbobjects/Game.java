@@ -31,4 +31,16 @@ public class Game {
     private List<Team> playingTeams = new ArrayList<>();
 
 
+    public void addTeam(Team team) {
+        playingTeams.add(team);
+    }
+
+    public void removeTeam(Team team) {
+        playingTeams.remove(team);
+    }
+
+    public void clearTeams() {
+        playingTeams.clear();
+    }
+
 }
