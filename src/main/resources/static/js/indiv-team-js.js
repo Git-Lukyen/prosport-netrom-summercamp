@@ -11,6 +11,29 @@ $(document).ready(function () {
         return this.optional(element) || /^[a-z\s]+$/i.test(value);
     });
 
+    let ctx = document.getElementById("myChart").getContext("2d");
+    let myChart = new Chart(ctx, {
+        type: "line",
+        data: {
+            labels: [
+                "date 1",
+                "date 2",
+                "date 3",
+                "date 4",
+                "date 5",
+                "date 6",
+                "date 7",
+            ],
+            datasets: [
+                {
+                    label: "Average Score",
+                    data: [2, 9, 3, 17, 6, 3, 7],
+                    backgroundColor: "rgba(242,184,255,0.6)",
+                },
+            ],
+        },
+    });
+
     $("#input-form").validate({
         rules: {
             teamName: {

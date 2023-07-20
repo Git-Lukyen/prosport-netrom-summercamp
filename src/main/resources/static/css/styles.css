@@ -256,3 +256,20 @@ td a {
 #comp-menu .input-group{
     margin-bottom: 25px;
 }
+
+#card1{
+    position:absolute;
+    top: 160px;
+    left: 300px;
+}
+
+#card2{
+    position:absolute;
+    top: 220px;
+    right: 300px;
+}
+
+.card{
+    background: #282828;
+    color: white;
+}

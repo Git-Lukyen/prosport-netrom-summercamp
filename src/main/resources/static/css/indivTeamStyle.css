@@ -7,7 +7,7 @@
     width: 80%;
     padding: 2vh;
     overflow-x: clip;
-    min-height: 50vh;
+    min-height: 90vh;
     margin-bottom: 25px;
 }
 
@@ -206,4 +206,11 @@ label.error {
     top: 207px;
     display: none;
     color: red;
+}
+
+#team-stats{
+    position: absolute;
+    width: 500px;
+    top: 400px;
+    text-align: center;
 }
