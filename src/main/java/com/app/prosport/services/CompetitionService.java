@@ -37,6 +37,17 @@ public class CompetitionService {
         return compRepository.save(comp);
     }
 
+    public String getBracketData(Integer compID) {
+        return compRepository.findById(compID).get().getBracketData();
+    }
+
+    public void setBracketData(Integer compID, String data) {
+        Competition foundComp = compRepository.findById(compID).get();
+
+        foundComp.setBracketData(data);
+        compRepository.save(foundComp);
+    }
+
     public void generateTeamsBracket(Integer compID) {
         Competition foundComp = compRepository.findById(compID).get();
         Vector<Team> registeredTeams = new Vector<>(teamPlayerService.getTeamsInComp(compID));
@@ -54,6 +65,7 @@ public class CompetitionService {
             gameRepository.delete(game);
         }
         foundComp.clearGames();
+        foundComp.setBracketData(null);
         compRepository.save(foundComp);
 
         if (!(registeredTeams.size() == 2 || registeredTeams.size() == 4 || registeredTeams.size() == 8))
@@ -163,12 +175,22 @@ public class CompetitionService {
         Competition foundComp = compRepository.findById(ID).get();
 
         List<Team> registeredTeams = foundComp.getRegisteredTeams();
+        List<Game> scheduledGames = foundComp.getScheduledGames();
         for (Team team : registeredTeams) {
             team.removeCompetition(foundComp);
+            team.removeGames(scheduledGames);
+            teamRepository.save(team);
         }
 
+        for (Game game : scheduledGames) {
+            game.setAssignedComp(null);
+            game.clearTeams();
+            gameRepository.delete(game);
+        }
+
+        foundComp.clearGames();
         foundComp.clearTeams();
 
-        compRepository.deleteById(foundComp.getCompID());
+        compRepository.delete(foundComp);
     }
 }

@@ -62,6 +62,14 @@ public class Team {
         registeredGames.remove(game);
     }
 
+    public void removeGames(List<Game> games) {
+        registeredGames.remove(games);
+    }
+
+    public void clearGames() {
+        registeredGames.clear();
+    }
+
     public void addCompetition(Competition comp) {
         assignedComps.add(comp);
     }

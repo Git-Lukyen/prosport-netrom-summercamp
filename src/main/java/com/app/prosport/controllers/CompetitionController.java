@@ -32,6 +32,16 @@ public class CompetitionController {
         return compService.getCompetitionGames(ID);
     }
 
+    @GetMapping(value = "comps/{id}/bracket-data")
+    public String getBracketData(@PathVariable(value = "id") Integer ID) {
+        return compService.getBracketData(ID);
+    }
+
+    @PostMapping(value = "comps/{id}/bracket-data")
+    public void setBracketData(@PathVariable(value = "id") Integer ID, @RequestBody String data) {
+        compService.setBracketData(ID, data);
+    }
+
     @PostMapping(value = "comps/{id}/generate/bracket")
     public void generateTeamBrackets(@PathVariable(value = "id") Integer ID) {
         compService.generateTeamsBracket(ID);

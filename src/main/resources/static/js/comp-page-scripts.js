@@ -66,7 +66,6 @@ $(document).ready(function () {
             data: data,
             url: baseURL + "comps/add/single",
             contentType: "application/json",
-            dataType: 'json',
             success: function (data) {
                 console.log(data);
                 updateCompetitionTable();

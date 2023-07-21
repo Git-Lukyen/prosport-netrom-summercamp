@@ -55,7 +55,7 @@ $(document).ready(function () {
 
                 nrTeams = data.numberOfTeams;
 
-                if (data.numberOfTeams >= 16)
+                if (data.numberOfTeams >= 8)
                     $("#full-comp-alert").css("display", "block");
                 else
                     $("#full-comp-alert").css("display", "none");
@@ -220,13 +220,26 @@ $(document).ready(function () {
                     $("#generate-error").css("display", "none");
                 }
 
-                var saveData = {
-                    teams: data.bracketNames,
-                    results: data.bracketScores
-                };
+                let saveData;
+
+                if (data.bracketData == null) {
+                    saveData = {
+                        teams: data.bracketNames,
+                        results: data.bracketScores
+                    };
+                } else
+                    saveData = JSON.parse(data.bracketData);
 
                 function saveFn(data, userData) {
-
+                    console.log(data);
+                    $.ajax({
+                        type: "POST",
+                        data: JSON.stringify(data),
+                        url: baseURL + "comps/" + id + "/bracket-data",
+                        contentType: "application/json",
+                        success: function (data) {
+                        }
+                    });
                 }
 
                 $(function () {

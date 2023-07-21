@@ -29,20 +29,21 @@ public class Competition {
     private Integer numberOfTeams;
     private Integer numberOfGames;
 
+    @Column(length = 1000000)
     private String bracketData;
 
     @Transient
     private List<List<String>> bracketNames;
 
     @Transient
-    private List<List<Integer>> bracketScores;
+    private List<List<String>> bracketScores;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "comp_team", joinColumns = {@JoinColumn(name = "comp_id")}, inverseJoinColumns = {@JoinColumn(name = "team_id")})
-    private List<Team> registeredTeams;
+    private List<Team> registeredTeams = new ArrayList<>();
 
     @OneToMany(mappedBy = "assignedComp")
-    private List<Game> scheduledGames;
+    private List<Game> scheduledGames = new ArrayList<>();
 
     public Integer getNumberOfTeams() {
         if (registeredTeams == null)

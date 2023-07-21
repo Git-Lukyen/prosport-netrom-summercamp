@@ -1,10 +1,12 @@
 package com.app.prosport.services;
 
 import com.app.prosport.dbobjects.Competition;
+import com.app.prosport.dbobjects.Game;
 import com.app.prosport.dbobjects.Player;
-import com.app.prosport.repositories.CompRepository;
-import com.app.prosport.repositories.PlayerRepository;
 import com.app.prosport.dbobjects.Team;
+import com.app.prosport.repositories.CompRepository;
+import com.app.prosport.repositories.GameRepository;
+import com.app.prosport.repositories.PlayerRepository;
 import com.app.prosport.repositories.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -26,7 +28,10 @@ public class TeamPlayerService {
     private TeamRepository teamRepository;
 
     @Autowired
-    CompRepository compRepository;
+    private CompRepository compRepository;
+
+    @Autowired
+    private GameRepository gameRepository;
 
     //Player Related
     public List<Player> getAllPlayers() {
@@ -130,7 +135,10 @@ public class TeamPlayerService {
     }
 
     public void deletePlayerById(Integer ID) {
-        playerRepository.deleteById(ID);
+        Player foundPlayer = playerRepository.findById(ID).get();
+        foundPlayer.setAssignedTeam(null);
+        playerRepository.delete(foundPlayer);
+
     }
 
     public void deleteAllPlayers() {
@@ -204,7 +212,7 @@ public class TeamPlayerService {
         Team foundTeam = teamRepository.findById(teamID).get();
         Competition foundComp = compRepository.findById(compID).get();
 
-        if (foundComp.getNumberOfTeams() >= 16)
+        if (foundComp.getNumberOfTeams() >= 8)
             return;
 
         foundTeam.setAssignDate(LocalDate.now());
@@ -239,13 +247,25 @@ public class TeamPlayerService {
     public void removeTeam(Integer ID) {
 
         Team foundTeam = teamRepository.findById(ID).get();
-        if (foundTeam == null)
-            return;
 
         List<Player> teamPlayers = foundTeam.getPlayers();
 
         for (Player player : teamPlayers)
             player.setAssignedTeam(null);
+
+        List<Competition> competitions = foundTeam.getAssignedComps();
+        for (Competition competition : competitions) {
+            competition.removeTeam(foundTeam);
+            compRepository.save(competition);
+        }
+        foundTeam.clearCompetitions();
+
+        List<Game> games = foundTeam.getRegisteredGames();
+        for (Game game : games) {
+            game.removeTeam(foundTeam);
+            gameRepository.save(game);
+        }
+        foundTeam.clearGames();
 
         teamRepository.delete(foundTeam);
     }

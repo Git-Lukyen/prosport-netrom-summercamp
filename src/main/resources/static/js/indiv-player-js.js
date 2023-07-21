@@ -142,7 +142,7 @@ $(document).ready(function () {
     $("#delete-confirm-btn").click(function () {
         $.ajax({
             type: "DELETE",
-            url: baseURL + "comps/id/" + id,
+            url: baseURL + "players/" + id,
             contentType: "application/json",
             success: function () {
                 window.location.replace(baseURL + "players-section")
