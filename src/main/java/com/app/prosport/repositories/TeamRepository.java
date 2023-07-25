@@ -11,5 +11,8 @@ import java.util.Optional;
 
 public interface TeamRepository extends JpaRepository<Team, Integer> {
     public Optional<Team> findByTeamName(String name);
+
     public Optional<List<Team>> findByRegistrationDateBetween(LocalDate from, LocalDate to, Sort sort);
+
+    public Optional<Team> findByAgeBetween(Integer from, Integer to);
 }

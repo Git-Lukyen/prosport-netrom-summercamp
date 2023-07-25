@@ -1,24 +1,46 @@
 package com.app.prosport.dbobjects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table
+@Getter
+@Setter
+@NoArgsConstructor
 public class Game {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer gameID;
 
-    private String gameName;
-    private String locationName;
-
     private Integer scoreRed;
     private Integer scoreBlue;
 
-    @ManyToMany(mappedBy = "registeredGames")
-    List<Team> playingTeams = new ArrayList<>();
+    @ManyToOne()
+    @JoinColumn(name = "compid")
+    @JsonIgnore
+    private Competition assignedComp;
 
+    @ManyToMany(mappedBy = "registeredGames")
+    private List<Team> playingTeams = new ArrayList<>();
+
+
+    public void addTeam(Team team) {
+        playingTeams.add(team);
+    }
+
+    public void removeTeam(Team team) {
+        playingTeams.remove(team);
+    }
+
+    public void clearTeams() {
+        playingTeams.clear();
+    }
 
 }

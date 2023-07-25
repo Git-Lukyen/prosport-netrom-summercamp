@@ -1,0 +1,82 @@
+#player-main-display {
+    background: #282828;
+    margin: auto;
+    margin-top: 2%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    color: #f8f4f4;
+    width: 80%;
+    padding: 2vh;
+    overflow-x: clip;
+    min-height: 50vh;
+    margin-bottom: 25px;
+}
+
+#player-details {
+    padding-top: 4vh;
+    padding-left: 1%;
+    line-height: 50%;
+}
+
+#player-title {
+    border-bottom: solid 2px;
+    padding-left: 1%;
+    padding-bottom: 0.5%;
+}
+
+#edit-player-lbl {
+    position: absolute;
+    top: 262px;
+}
+
+#modify-player-btn {
+    position: absolute !important;
+    background: #dec3eb;
+    font-size: revert;
+    top: 109px;
+    left: 1100px;
+}
+
+#delete-player-btn {
+    position: absolute !important;
+    background: #dec3eb;
+    font-size: revert;
+    top: 109px;
+    left: 1210px;
+}
+
+label.error {
+    position: absolute;
+    color: red;
+    font-size: 1rem;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+}
+
+input {
+    width: 300px;
+    border: solid 1px;
+    position: relative;
+    margin-top: 25px;
+    margin-bottom: 3px;
+    left: 80px;
+    text-align: center;
+    border: solid 1px;
+}
+
+#date_picker {
+    width: 300px;
+    position: relative;
+    left: 80px;
+    text-align: center;
+}
+
+.input-group {
+    width: 300px;
+}
+
+.form-control {
+    border: solid 1px;
+}

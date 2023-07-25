@@ -1,7 +1,9 @@
 package com.app.prosport.dbobjects;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,6 +22,7 @@ public class Team {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer teamID;
 
+    @NotEmpty(message = "Team name required")
     @Column
     private String teamName;
 
@@ -27,11 +30,20 @@ public class Team {
     private LocalDate registrationDate;
 
     @OneToMany(mappedBy = "assignedTeam")
+    @JsonIgnore
     private List<Player> players = new ArrayList<>();
 
     private Integer numberOfPlayers = players.size();
+
+    @ManyToMany(mappedBy = "registeredTeams")
+    @JsonIgnore
+    private List<Competition> assignedComps;
+
+    private LocalDate assignDate;
+
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "team_game", joinColumns = {@JoinColumn(name = "team_id")}, inverseJoinColumns = {@JoinColumn(name = "game_id")})
+    @JsonIgnore
     private List<Game> registeredGames = new ArrayList<>();
 
     public Integer getNumberOfPlayers() {
@@ -40,5 +52,33 @@ public class Team {
             return 0;
 
         return len;
+    }
+
+    public void addGame(Game game) {
+        registeredGames.add(game);
+    }
+
+    public void removeGame(Game game) {
+        registeredGames.remove(game);
+    }
+
+    public void removeGames(List<Game> games) {
+        registeredGames.remove(games);
+    }
+
+    public void clearGames() {
+        registeredGames.clear();
+    }
+
+    public void addCompetition(Competition comp) {
+        assignedComps.add(comp);
+    }
+
+    public void removeCompetition(Competition comp) {
+        assignedComps.remove(comp);
+    }
+
+    public void clearCompetitions() {
+        assignedComps.clear();
     }
 }

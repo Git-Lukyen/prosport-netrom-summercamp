@@ -1,3 +1,4 @@
+
 body {
     padding: 0;
     margin: 0;
@@ -9,30 +10,52 @@ body {
     color: #282828;
 }
 
-#teams-table {
+#teams-table, #players-table, #comp-table {
     text-align: center;
     position: relative;
-    margin: 3% 0% 3% 28%;
+    margin: 5.9% 0% 3% 28%;
     width: 70%;
-    border:1px;
+    border: 1px;
 }
 
-#teams-table tr:nth-child(odd) {
+#teams-table tr:nth-child(odd), #players-table tr:nth-child(odd), #comp-table tr:nth-child(odd) {
     background-color: #f0d8f8;
     text-color: #282828;
 }
 
-#teams-table tr:nth-child(even) {
+#teams-table tr:nth-child(even), #players-table tr:nth-child(even), #comp-table tr:nth-child(even) {
     background-color: #dec3eb;
     text-color: #dee2e6;
 }
 
-#teams-table thead tr th{
+#teams-table thead tr th, #players-table thead tr th, #comp-table thead tr th {
     background-color: #2f262d;
+    text-align: center;
 }
 
-#teams-table thead{
-    color:#f8f4f4;
+#teams-table thead, #players-table thead, #comp-table thead {
+    color: #f8f4f4;
+}
+
+#teams-table_length, #players-table_length, #comp-table_length {
+    margin-left: 28.1%;
+    margin-top: 2.5%;
+}
+
+#teams-table_filter, #players-table_filter, #comp-table_filter {
+    margin-top: 2.5%;
+    margin-right: 2.1%;
+}
+
+#teams-table_info, #players-table_info, #comp-table_info {
+    margin-left: 28.1%;
+    margin-top: -3.5%;
+}
+
+#teams-table_paginate, #players-table_paginate, #comp-table_paginate {
+    position: absolute;
+    margin-left: 52.5%;
+    margin-top: -1%;
 }
 
 th {
@@ -41,6 +64,11 @@ th {
 
 td {
     text-align: center;
+}
+
+td a {
+    text-decoration: none;
+    color: #282828;
 }
 
 .side-menu {
@@ -87,7 +115,7 @@ td {
 .top-bar {
     width: 100%;
     height: 9vh;
-    background-color: #30646c;
+    background-color: #282828;
     transition: 0.5s;
     padding: 0.5%;
 }
@@ -102,15 +130,24 @@ td {
     transition: 0.3s;
 }
 
-#team-menu{
+#team-menu, #player-menu, #comp-menu {
     position: absolute;
-    margin-top: 4%;
+    margin-top: 5.7%;
     margin-left: 4%;
     display: block;
-    text-align:center;
+    text-align: center;
+    z-index: 2;
 }
 
-#team-menu .form-control{
+#comp-menu {
+    margin-top: 5.3%;
+}
+
+#team-menu {
+    margin-top: 4%;
+}
+
+#team-menu .form-control, #player-menu .form-control, #comp-menu .form-control, #comp-menu #date_picker {
     display: flex;
     flex-wrap: wrap;
     width: 20vw;
@@ -120,14 +157,119 @@ td {
     background-color: #f8f4f4;
 }
 
-#team-menu .btn {
+#comp-menu .form-control, #comp-menu #date_picker {
+    margin-top: 3%;
+}
+
+#team-menu .btn, #player-menu .btn, #comp-menu .btn {
     margin-top: 5%;
     /*     margin-left: 27.5%; */
-    align-self:center;
+    align-self: center;
     background-color: #2f262d;
     color: white;
 }
 
+#player-menu .form-control {
+    margin-top: 3px;
+    width: 8.5vw;
+}
+
+#player-menu {
+    margin-left: 1.2vw;
+}
+
+#player-menu #add-player-btn {
+    margin-bottom: 20px;
+    left: 111px;
+    top: 318px;
+    position: absolute;
+    width: 160px;
+}
+
+#comp-menu #add-comp-btn {
+    margin-bottom: 20px;
+    left: 60px;
+    top: 200px;
+    position: absolute;
+    width: 180px;
+    height: 37px;
+}
+
+#del-col {
+    width: 0px !important;
+}
+
+.del-player-btn, .del-team-btn, .del-comp-btn {
+    font-size: large;
+    background: #ff8787;
+    width: 2.5vw;
+}
+
 #main-div {
     transition: margin-left 0.5s;
+}
+
+#teams-table_wrapper, #players-table_wrapper, #comp-table_wrapper {
+    display: flow-root;
+}
+
+#player-menu label.error {
+    position: absolute;
+    color: red;
+    font-size: 1rem;
+    display: block;
+    margin-top: -21px;
+}
+
+#team-menu label.error {
+    position: absolute;
+    color: red;
+    font-size: 1rem;
+    display: block;
+    margin-top: 5px;
+}
+
+#comp-menu label.error {
+    position: absolute;
+    color: red;
+    font-size: 1rem;
+    display: block;
+    margin-top: -17px;
+}
+
+#player-menu #input-form {
+    width: 300px;
+    left: 42px;
+    position: absolute;
+}
+
+#player-menu .input-group{
+    margin-bottom: 25px;
+}
+
+#comp-menu #input-form {
+    width: 300px;
+    left: 2px;
+    position: absolute;
+}
+
+#comp-menu .input-group{
+    margin-bottom: 25px;
+}
+
+#card1{
+    position:absolute;
+    top: 160px;
+    left: 300px;
+}
+
+#card2{
+    position:absolute;
+    top: 220px;
+    right: 300px;
+}
+
+.card{
+    background: #282828;
+    color: white;
 }
